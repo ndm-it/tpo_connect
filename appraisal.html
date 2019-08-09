@@ -175,6 +175,13 @@
           console.log('Fetch Error :-S', err);
         });
     }
+
+    function onClickCallMyFunction()
+    {
+      document.getElementById("nodeGoto").addEventListener("click", function() {
+    myFunction(appraisalCompany);
+}, false);
+    }
     </script>
 </head>
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
