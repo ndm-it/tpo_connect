@@ -64,6 +64,10 @@
         function myFunction(appraisalName) {
             if (appraisalName) {
                 if (appraisalName.includes('Act Appraisal')) {
+                  if (screen.width <= 699) {
+                    document.location = 'http://www.actappraisal.com';
+                  }
+                  else
                     window.open('http://www.actappraisal.com', '_blank');
                 }
                 else if (appraisalName.includes('AMC Appraisal Management Company, LLC')) {
