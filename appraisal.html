@@ -176,11 +176,9 @@
         });
     }
 
-    function onClickCallMyFunction()
+    function buttonFunction()
     {
-      document.getElementById("nodeGoto").addEventListener("click", function() {
-    myFunction(appraisalCompany);
-}, false);
+      myFunction(appraisalCompany);
     }
     </script>
 </head>
@@ -205,9 +203,10 @@
                 <h2>Loan Number:&nbsp;<span id="loanNumber"></span></h2>
                 <h2>Loan GUID:&nbsp;<span id="loanGUID"></span></h2>
                 <h3>Property Address</h3>
-                <input type="button" id="nodeGoto" />
-                <input type="button" onClick="myFunction(\'' + appraisalCompany + '\')" />
-                <!--<button onclick="myFunction(\'' + appraisalCompany + '\')">Order Appraisal</button>-->
+                <h1 onclick="buttonFunction()">Click Me</h1>
+                <!--<input type="button" id="nodeGoto" />
+                <input type="button" onClick="myFunction(\'' + appraisalCompany + '\')" />-->
+                <button onclick="buttonFunction()">Order Appraisal</button>
                 <span>
                     <span id="propertyStreet"></span>
                     <br />
