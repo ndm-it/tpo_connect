@@ -1,48 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <style>
-  .button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #f4511e;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-
-  .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-
-  .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-
-  .button:hover span {
-    padding-right: 25px;
-  }
-
-  .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
-
-  </style>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <!--<script src="https://4861819866.encompasstpoconnect.com/scripts/elli-ssf-guest.js"></script>-->
     <script src="https://cdn.elliemae.io/elliemae/core/ssf/1.0/elli.ssf.guest-with-polyfill.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -245,7 +204,7 @@
                 <h2>Loan Number:&nbsp;<span id="loanNumber"></span></h2>
                 <h2>Loan GUID:&nbsp;<span id="loanGUID"></span></h2>
                 <h3>Property Address</h3>
-                <button onclick="buttonFunction()">Order Appraisal</button>
+                <button class="button" onclick="buttonFunction()">Order Appraisal</button>
                 <span>
                     <span id="propertyStreet"></span>
                     <br />
