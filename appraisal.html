@@ -21,15 +21,15 @@
       });
     });
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
-    elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
-    function onLoanOpened(proxy, loanData) {
-      GetLoanData();
-      $("div#loanAvailable").show();
-      $("div#loanNotAvailable").hide();
-      $("div#processing").show();
-      this.loanData = loanData;
-      console.log('loanOpen => loanData ===', loanData);
-    }
+    // elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
+    // function onLoanOpened(proxy, loanData) {
+    //   GetLoanData();
+    //   $("div#loanAvailable").show();
+    //   $("div#loanNotAvailable").hide();
+    //   $("div#processing").show();
+    //   this.loanData = loanData;
+    //   console.log('loanOpen => loanData ===', loanData);
+    // }
     // Sample methods for getting various data objects, just console logging for illustrative purposes.
     function GetUserData() {
       // Get basic user info and console log only.
