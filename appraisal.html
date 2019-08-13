@@ -8,7 +8,6 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
-        //var authObj = {};
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -26,7 +25,6 @@
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
        GetLoanData();
-       //getClientAuthCode();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        $("div#processing").show();
@@ -34,16 +32,7 @@
        console.log('loanOpen => loanData ===', loanData);
      }
 
-//Testing out retrieving the authcode
-      // function getClientAuthCode() {
-      //   authObj = elli.script.getObject('auth');
-      //     return authObj.createAuthCode().then(clientAuthCode => {
-      //         console.log('Heres the client auth code from encw', clientAuthCode);
-      //     })
-      //     .catch(err => {
-      //         window.alert('Error while fetching user obj');
-      //     });
-      // }
+
 
     // Sample methods for getting various data objects, just console logging for illustrative purposes.
     function GetUserData() {
