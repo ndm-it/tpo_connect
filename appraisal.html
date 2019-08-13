@@ -8,8 +8,8 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
-        var authObj = {};
-        //var loanObj = "";
+        //var authObj = {};
+        var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -35,15 +35,15 @@
      }
 
 //Testing out retrieving the authcode
-      function getClientAuthCode() {
-        authObj = elli.script.getObject('auth');
-          return authObj.createAuthCode().then(clientAuthCode => {
-              console.log('Heres the client auth code from encw', clientAuthCode);
-          })
-          .catch(err => {
-              window.alert('Error while fetching user obj');
-          });
-      }
+      // function getClientAuthCode() {
+      //   authObj = elli.script.getObject('auth');
+      //     return authObj.createAuthCode().then(clientAuthCode => {
+      //         console.log('Heres the client auth code from encw', clientAuthCode);
+      //     })
+      //     .catch(err => {
+      //         window.alert('Error while fetching user obj');
+      //     });
+      // }
 
     // Sample methods for getting various data objects, just console logging for illustrative purposes.
     function GetUserData() {
@@ -152,6 +152,16 @@
             else {
                 console.log('No appraisal company assigned');
             }
+        }
+
+        function getLoanObj() {
+            loanObj.all().then(loanDataResp => {
+                console.log('Heres the loan from encw', loanDataResp);
+                loanData = loanDataResp;
+            })
+            .catch(err => {
+            window.alert('Error while fetching loan obj');
+            });
         }
 
     function GetLoanData() {
