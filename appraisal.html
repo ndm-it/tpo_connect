@@ -141,6 +141,7 @@
                 console.log('No appraisal company assigned');
             }
         }
+        console.log('before defining getLoanObj');
 
         function getLoanObj() {
             loanObj.all().then(loanDataResp => {
@@ -183,6 +184,7 @@
           $('#appriaser').html(loanData.UnderwriterSummary.OriginalAppraiser);
           $('#processing').hide();
             $('#results').show();
+            console.log('before calling getLoanObj');
             getLoanObj();
             console.log('before calling myFunction');
             myFunction(appraisalCompany);
