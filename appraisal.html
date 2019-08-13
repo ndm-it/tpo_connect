@@ -8,6 +8,7 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
+        var authObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -16,20 +17,33 @@
         GetUserData();
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
 		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
-          GetLoanData();
+          //GetLoanData();
           //myFunction();
       });
     });
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
+     authObj = await elli.script.getObject('auth');
      function onLoanOpened(proxy, loanData) {
        GetLoanData();
+       getClientAuthCode();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        $("div#processing").show();
        this.loanData = loanData;
        console.log('loanOpen => loanData ===', loanData);
      }
+
+//Testing out retrieving the authcode
+     function getClientAuthCode() {
+         return authObj.createAuthCode().then(clientAuthCode => {
+             //console.log('Heres the client auth code from encw', clientAuthCode);
+         })
+         .catch(err => {
+             window.alert('Error while fetching user obj');
+         });
+     }
+
     // Sample methods for getting various data objects, just console logging for illustrative purposes.
     function GetUserData() {
       // Get basic user info and console log only.
