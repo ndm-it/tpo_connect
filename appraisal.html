@@ -26,7 +26,7 @@
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
        GetLoanData();
-       getClientAuthCode();
+       //getClientAuthCode();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        $("div#processing").show();
