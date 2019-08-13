@@ -33,7 +33,6 @@
      }
 
 
-
     // Sample methods for getting various data objects, just console logging for illustrative purposes.
     function GetUserData() {
       // Get basic user info and console log only.
@@ -153,15 +152,6 @@
             });
         }
 
-        function getTPOLoanObj() {
-            tpoAppObject.all().then(loanDataResp => {
-                console.log('Heres the loan from encw', loanDataResp);
-                loanData = loanDataResp;
-            })
-            .catch(err => {
-            window.alert('Error while fetching loan obj');
-            });
-        }
 
     function GetLoanData() {
       // Get loan summary and console log only.
@@ -192,7 +182,6 @@
           $('#appriaser').html(loanData.UnderwriterSummary.OriginalAppraiser);
           $('#processing').hide();
             $('#results').show();
-            //getTPOLoanObj();
             myFunction(appraisalCompany);
 
         }
