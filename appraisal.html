@@ -144,6 +144,7 @@
 
         function getLoanObj() {
             loanObj.all().then(loanDataResp => {
+              console.log('trying to pull the loan obj');
                 console.log('Heres the loan from encw', loanDataResp);
                 loanData = loanDataResp;
             })
@@ -183,6 +184,7 @@
           $('#processing').hide();
             $('#results').show();
             getLoanObj();
+            console.log('before calling myFunction');
             myFunction(appraisalCompany);
 
         }
