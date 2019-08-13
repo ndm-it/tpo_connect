@@ -164,6 +164,16 @@
             });
         }
 
+        function getTPOLoanObj() {
+            tpoAppObject.all().then(loanDataResp => {
+                console.log('Heres the loan from encw', loanDataResp);
+                loanData = loanDataResp;
+            })
+            .catch(err => {
+            window.alert('Error while fetching loan obj');
+            });
+        }
+
     function GetLoanData() {
       // Get loan summary and console log only.
       tpoAppObject.getLoanSummary().then(function (loanSummary) {
@@ -193,7 +203,7 @@
           $('#appriaser').html(loanData.UnderwriterSummary.OriginalAppraiser);
           $('#processing').hide();
             $('#results').show();
-            getLoanObj();
+            getTPOLoanObj();
             myFunction(appraisalCompany);
 
         }
