@@ -141,12 +141,12 @@
 
     function GetLoanData() {
       // Get loan summary and console log only.
-      tpoAppObject.getLoanSummary().then(function (loanSummary) {
-        console.log('Loan Summary ===', loanSummary);
-      })
-        .catch(function (err) {
-          console.log('Fetch Error :-S', err);
-        });
+      // tpoAppObject.getLoanSummary().then(function (loanSummary) {
+      //   console.log('Loan Summary ===', loanSummary);
+      // })
+      //   .catch(function (err) {
+      //     console.log('Fetch Error :-S', err);
+      //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           console.log('Loan Data ===', loanData);
@@ -160,7 +160,7 @@
           // Get a few property address level fields for illustrative purposes.
             $('#loanNumber').html(loanData.LoanNumber);
             $('#loanGUID').html(loanData.EncompassId);
-            console.log('UnderWriterSummary ===',loanData.UnderwriterSummary);
+            //console.log('UnderWriterSummary ===',loanData.UnderwriterSummary);
           $('#propertyStreet').html(loanData.Property.StreetAddress);
           $('#propertyCity').html(loanData.Property.City);
           $('#propertyState').html(loanData.Property.State);
