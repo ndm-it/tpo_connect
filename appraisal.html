@@ -44,7 +44,6 @@
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
         console.log('User Profile Data ===', userProfileData);
-        console.log('FirstName ===', userProfileData.FirstName);
         if (typeof userProfileData.FirstName === 'undefined') {
           $('#userNotAvailable').show();
           $('#userAvailable').hide();
@@ -140,7 +139,6 @@
                 console.log('No appraisal company assigned');
             }
         }
-        console.log('before defining getLoanObj');
 
         function getLoanObj() {
             loanObj.all().then(loanDataResp => {
@@ -175,7 +173,7 @@
           // Get a few property address level fields for illustrative purposes.
             $('#loanNumber').html(loanData.LoanNumber);
             $('#loanGUID').html(loanData.EncompassId);
-            console.log(loanData.UnderwriterSummary);
+            console.log('UnderWriterSummary ===',loanData.UnderwriterSummary);
           $('#propertyStreet').html(loanData.Property.StreetAddress);
           $('#propertyCity').html(loanData.Property.City);
           $('#propertyState').html(loanData.Property.State);
