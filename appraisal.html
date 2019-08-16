@@ -22,10 +22,11 @@
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
+       $("div#processing").show();
        GetLoanData();
        $("div#loanAvailable").show();
+       $("div#processing").hide();
        $("div#loanNotAvailable").hide();
-       $("div#processing").show();
        this.loanData = loanData;
        console.log('loanOpen => loanData ===', loanData);
      }
