@@ -9,6 +9,8 @@
   color: #fff;
   background-color: #003C71;
   border: none;
+  width: 600;
+  height: 200;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
