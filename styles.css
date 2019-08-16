@@ -7,7 +7,7 @@
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #46505C;
+  background-color: #003C71;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -16,7 +16,7 @@
 .button:hover {background-color: #697585}
 
 .button:active {
-  background-color: #3e8e41;
+  background-color: #006599;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
