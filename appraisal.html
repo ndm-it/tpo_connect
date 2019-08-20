@@ -157,11 +157,14 @@
           //Testing the contact list out
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
-            console.log(item.ContactType);
-
+            if(item.ContactType === 'APPRAISAL_COMPANY')
+            {
+            console.log(item.Name);
+            appraisalCompany = item.Name;
+            }
           });
           //console.log(contactsList);
-          appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
+          //appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
         if (typeof loanData.LoanNumber === 'undefined') {
           $('#loanNotAvailable').show();
           $('#loanAvailable').hide();
