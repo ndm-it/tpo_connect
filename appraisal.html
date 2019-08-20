@@ -7,6 +7,7 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
+        var contactsList = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -153,6 +154,9 @@
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           console.log('Loan Data ===', loanData);
+          //Testing the contact list out
+          contactsList = loanData.Contacts;
+          console.log(contactsList);
           appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
         if (typeof loanData.LoanNumber === 'undefined') {
           $('#loanNotAvailable').show();
