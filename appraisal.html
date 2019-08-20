@@ -31,7 +31,7 @@
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        this.loanData = loanData;
-       console.log('loanOpen => loanData ===', loanData);
+       //console.log('loanOpen => loanData ===', loanData);
      }
 
 
@@ -39,14 +39,14 @@
     function GetUserData() {
       // Get basic user info and console log only.
       tpoAppObject.getUserData().then(function (userData) {
-        console.log('User Data ===', userData);
+        //console.log('User Data ===', userData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
-        console.log('User Profile Data ===', userProfileData);
+        //console.log('User Profile Data ===', userProfileData);
         if (typeof userProfileData.FirstName === 'undefined') {
           $('#userNotAvailable').show();
           $('#userAvailable').hide();
@@ -153,7 +153,7 @@
       //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
-          console.log('Loan Data ===', loanData);
+          //console.log('Loan Data ===', loanData);
           //Testing the contact list out
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
