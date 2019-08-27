@@ -48,10 +48,8 @@
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
         //console.log('User Profile Data ===', userProfileData);
         if (typeof userProfileData.FirstName === 'undefined') {
-          $('#userNotAvailable').show();
           $('#userAvailable').hide();
         } else {
-          $('#userNotAvailable').hide();
           $('#userAvailable').show();
             // Get a few fields for illustrative purposes.
             $('#userName').html(userProfileData.FirstName + ' ' + userProfileData.LastName);
