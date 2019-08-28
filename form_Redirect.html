@@ -7,6 +7,7 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
+        var
         var contactsList = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
@@ -66,7 +67,7 @@
 
         function myFunction(appraisalName) {
           //window.location.href('https://www.tfaforms.com/4759136?loanOfficer=' + appraisalName);
-          document.location.href = "https://www.tfaforms.com/4759136?tfa_2=" + appraisalName;
+          document.location.href = "https://www.tfaforms.com/4759136?tfa_2=" + appraisalName + "&tfa_22=" + ;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + appraisalName,'_blank');
           //window.open('https://www.actappraisal.com/#act-login', '_blank');
         }
@@ -126,22 +127,5 @@
     </script>
 </head>
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
-    <div style="padding-left: 30px;">
-        <div>
-          <div id="processing">
-            <h2>Pulling Assigned AMC</h2>
-          </div>
-            <div id="userAvailable" style="display: none;">
-                <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
-            </div>
-            <div id="loanNotAvailable">
-                <h2>No Loan Selected</h2>
-            </div>
-            <div id="loanAvailable" style="display: none;">
-                <button class="button" onclick="buttonFunction()">Request Appraisal</button>
-            </div>
-        </div>
-        <hr style="clear: both" />
-    </div>
 </body>
 </html>
