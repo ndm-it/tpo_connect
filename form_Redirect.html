@@ -19,6 +19,7 @@
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
         this.tpoAppObject = tpoAppObject;
+        console.log("got tpoAppObject");
         GetUserData();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
