@@ -70,12 +70,12 @@
 
 
         function myFunction(appraisalName) {
-          var loFullNameURL = "tfa_2=" + appraisalName + "&";
+          var loFullNameURL = "?tfa_2=" + appraisalName + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
           var borrowerNameURL = "tfa_18=" + borrowerName;
           //window.location.href('https://www.tfaforms.com/4759136?loanOfficer=' + appraisalName);
-          document.location.href = "https://www.tfaforms.com/4759136?" + loFullNameURL + loFullNameURL + loEmailURL + borrowerNameURL;
+          document.location.href = "https://www.tfaforms.com/4759136" + loFullNameURL + loFullNameURL + loEmailURL + borrowerNameURL;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + appraisalName,'_blank');
           //window.open('https://www.actappraisal.com/#act-login', '_blank');
         }
