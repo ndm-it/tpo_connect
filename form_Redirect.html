@@ -98,9 +98,10 @@
           });
 
           //Setting loan officer name
-          loanData.Applications.forEach((item, index) => {
-            borrowerName = item.Borrower.FullName;
-          });
+          borrowerName = loanData.Applications[0].Borrower.FullName;
+          // loanData.Applications.forEach((item, index) => {
+          //   borrowerName = item.Borrower.FullName;
+          // });
             myFunction();
         }
       })
