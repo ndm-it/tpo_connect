@@ -7,16 +7,22 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
+        var loFullName = "";
+        var loPhoneNum = "";
+        var loEmail = "";
+        var loNMLS = "";
+        var borrowerName = "";
         var contactsList = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
+      console.log("before creating guest");
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
+        console.log("before retrieving tpoAppObject");
         this.tpoAppObject = tpoAppObject;
-        $("div#processing").show();
+        console.log("got tpoAppObject");
         GetUserData();
-        $("div#processing").hide();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
 		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
@@ -26,10 +32,7 @@
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
-       $("div#processing").show();
        GetLoanData();
-       $("div#loanAvailable").show();
-       $("div#loanNotAvailable").hide();
        this.loanData = loanData;
        console.log('loanOpen => loanData ===', loanData);
      }
@@ -47,16 +50,6 @@
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
         console.log('User Profile Data ===', userProfileData);
-        if (typeof userProfileData.FirstName === 'undefined') {
-          $('#userAvailable').hide();
-        } else {
-          $('#userAvailable').show();
-            // Get a few fields for illustrative purposes.
-            $('#userName').html(userProfileData.FirstName + ' ' + userProfileData.LastName);
-          $('#userEmail').html(userProfileData.Email);
-          $('#userOrgId').html(userProfileData.ExternalOrgID);
-          $('#userId').html(userProfileData.ExternalUserID);
-        }
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
@@ -65,7 +58,15 @@
 
 
         function myFunction() {
-            window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
+          var loFullNameURL = "?tfa_2=" + loFullName + "&";
+          var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
+          var loEmailURL = "tfa_8=" + loEmail + "&";
+          var borrowerNameURL = "tfa_18=" + borrowerName;
+          //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
+          //document.location.href = "https://www.tfaforms.com/4759136" + loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL;
+          //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
+          window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
+          //window.open('https://www.actappraisal.com/#act-login', '_blank');
         }
 
     function GetLoanData() {
@@ -77,9 +78,10 @@
       //     console.log('Fetch Error :-S', err);
       //   });
       // Get full loan object, console log and populate some basic on screen information.
+      console.log("starting GetLoanData function");
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
-          //Testing the contact list out
+          //Getting Appraisal Company Name
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
@@ -87,63 +89,27 @@
             console.log(item.Name);
             appraisalCompany = item.Name;
             }
-
             if(item.ContactType === 'LOAN_OFFICER')
             {
-              console.log(item.Name);
+              loFullName = item.Name;
+              loPhoneNum = item.Phone;
+              loEmail = item.Email;
             }
           });
-          //console.log(contactsList);
-          //appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
-        if (typeof loanData.LoanNumber === 'undefined') {
-          $('#loanNotAvailable').show();
-          $('#loanAvailable').hide();
-        } else {
-          $('#loanNotAvailable').hide();
-          $('#loanAvailable').show();
-          // Get a few property address level fields for illustrative purposes.
-            $('#loanNumber').html(loanData.LoanNumber);
-            $('#loanGUID').html(loanData.EncompassId);
-            //console.log('UnderWriterSummary ===',loanData.UnderwriterSummary);
-          $('#propertyStreet').html(loanData.Property.StreetAddress);
-          $('#propertyCity').html(loanData.Property.City);
-          $('#propertyState').html(loanData.Property.State);
-          $('#propertyZip').html(loanData.Property.PostalCode);
-          $('#appraiser').html(appraisalCompany);
-          $('#processing').hide();
-            $('#results').show();
-            myFunction();
 
+          //Setting loan officer name
+          loanData.Applications.forEach((item, index) => {
+            borrowerName = item.Borrower.FullName;
+          });
+            myFunction();
         }
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
     }
-
-    function buttonFunction()
-    {
-      myFunction();
-    }
     </script>
 </head>
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
-    <div style="padding-left: 30px;">
-        <div>
-          <div id="processing">
-            <h2>Pulling Assigned AMC</h2>
-          </div>
-            <div id="userAvailable" style="display: none;">
-                <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
-            </div>
-            <div id="loanNotAvailable">
-                <h2>No Loan Selected</h2>
-            </div>
-            <div id="loanAvailable" style="display: none;">
-                <button class="button" onclick="buttonFunction()">Request Appraisal</button>
-            </div>
-        </div>
-        <hr style="clear: both" />
-    </div>
 </body>
 </html>
