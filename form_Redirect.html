@@ -7,7 +7,11 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
-        var
+        var loFullName = "";
+        var loPhoneNum = "";
+        var loEmail = "";
+        var loNMLS = "";
+        var borrowerName = "";
         var contactsList = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
@@ -66,8 +70,12 @@
 
 
         function myFunction(appraisalName) {
+          var loFullNameURL = "tfa_2=" + appraisalName + "&";
+          var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
+          var loEmailURL = "tfa_8=" + loEmail + "&";
+          var borrowerNameURL = "tfa_18=" + borrowerName;
           //window.location.href('https://www.tfaforms.com/4759136?loanOfficer=' + appraisalName);
-          document.location.href = "https://www.tfaforms.com/4759136?tfa_2=" + appraisalName + "&tfa_22=" + ;
+          document.location.href = "https://www.tfaforms.com/4759136?" + loFullNameURL + loFullNameURL + loEmailURL + borrowerNameURL;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + appraisalName,'_blank');
           //window.open('https://www.actappraisal.com/#act-login', '_blank');
         }
@@ -83,7 +91,7 @@
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
-          //Testing the contact list out
+          //Getting Appraisal Company Name
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
@@ -91,7 +99,20 @@
             console.log(item.Name);
             appraisalCompany = item.Name;
             }
+            if(item.ContactType === 'LOAN_OFFICER')
+            {
+              loFullName = item.Name;
+              loPhoneNum = item.Phone;
+              loEmail = item.Email;
+            }
           });
+
+          //Setting loan officer name
+          loanData.Applications.forEach((item, index) => {
+            borrowerName = item.Borrower.FullName;
+          });
+
+
           //console.log(contactsList);
           //appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
         if (typeof loanData.LoanNumber === 'undefined') {
@@ -112,6 +133,7 @@
           $('#processing').hide();
             $('#results').show();
             myFunction(appraisalCompany);
+
 
         }
       })
