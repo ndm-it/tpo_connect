@@ -16,8 +16,10 @@
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
+      console.log("before creating guest");
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
+        console.log("before retrieving tpoAppObject");
         this.tpoAppObject = tpoAppObject;
         console.log("got tpoAppObject");
         GetUserData();
@@ -76,6 +78,7 @@
       //     console.log('Fetch Error :-S', err);
       //   });
       // Get full loan object, console log and populate some basic on screen information.
+      console.log("starting GetLoanData function");
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
           //Getting Appraisal Company Name
