@@ -12,16 +12,21 @@
         var loEmail = "";
         var loNMLS = "";
         var borrowerName = "";
+        var transactionType = "";
+        var programType = "";
+        var occupancy = "":
+        var fixedTerm = "";
+        var armType = "";
+        var propertyType = "";
+        var compensation = "";
+        var processorType = "";
         var contactsList = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
-      console.log("before creating guest");
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
-        console.log("before retrieving tpoAppObject");
         this.tpoAppObject = tpoAppObject;
-        console.log("got tpoAppObject");
         GetUserData();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
@@ -61,7 +66,8 @@
           var loFullNameURL = "?tfa_2=" + loFullName + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
-          var borrowerNameURL = "tfa_18=" + borrowerName;
+          var borrowerNameURL = "tfa_18=" + borrowerName + "&";
+          var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
           document.location.href = "https://www.tfaforms.com/4759136" + loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
@@ -78,7 +84,6 @@
       //     console.log('Fetch Error :-S', err);
       //   });
       // Get full loan object, console log and populate some basic on screen information.
-      console.log("starting GetLoanData function");
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
           //Getting Appraisal Company Name
@@ -99,6 +104,11 @@
 
           //Setting loan officer name
           borrowerName = loanData.Applications[0].Borrower.FullName;
+transactionType = loanData.Property.LoanPurposeType;
+          // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
+          // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
+          // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
+
           // loanData.Applications.forEach((item, index) => {
           //   borrowerName = item.Borrower.FullName;
           // });
