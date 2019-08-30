@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.elliemae.io/elliemae/core/ssf/1.0/elli.ssf.guest-with-polyfill.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        var tpoAppObject = null;
+        var appraisalCompany = "";
+        var loFullName = "";
+        var loPhoneNum = "";
+        var loEmail = "";
+        var loNMLS = "";
+        var borrowerName = "";
+        var transactionType = "";
+        var programType = "";
+        var occupancy = "";
+        var fixedTerm = "";
+        var armType = "";
+        var propertyType = "";
+        var compensation = "";
+        var processorType = "";
+        var contactsList = [];
+        var loanObj = {};
+    // Instantiate objects on window load (one-time event handling).
+    window.addEventListener("load", function () {
+      elli.script.guest.create();
+      elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
+        this.tpoAppObject = tpoAppObject;
+        GetUserData();
+
+		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
+		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
+          GetLoanData();
+      });
+    });
+    // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
+     elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
+     function onLoanOpened(proxy, loanData) {
+       GetLoanData();
+       this.loanData = loanData;
+       console.log('loanOpen => loanData ===', loanData);
+     }
+
+
+    // Sample methods for getting various data objects, just console logging for illustrative purposes.
+    function GetUserData() {
+      // Get basic user info and console log only.
+      tpoAppObject.getUserData().then(function (userData) {
+        console.log('User Data ===', userData);
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+      // Get full user profile, console log and populate some basic on screen information.
+      tpoAppObject.getUserProfileData().then(function (userProfileData) {
+        console.log('User Profile Data ===', userProfileData);
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+        }
+
+
+        function myFunction() {
+          var loFullNameURL = "?tfa_2=" + loFullName + "&";
+          var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
+          var loEmailURL = "tfa_8=" + loEmail + "&";
+          var borrowerNameURL = "tfa_18=" + borrowerName + "&";
+          var transactionTypeURL = "tfa_293=" + transactionType;
+          //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
+          document.location.href = "https://www.tfaforms.com/4760677" + loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + transactionTypeURL;
+          //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
+          //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
+          //window.open('https://www.actappraisal.com/#act-login', '_blank');
+        }
+
+    function GetLoanData() {
+      // Get loan summary and console log only.
+      // tpoAppObject.getLoanSummary().then(function (loanSummary) {
+      //   console.log('Loan Summary ===', loanSummary);
+      // })
+      //   .catch(function (err) {
+      //     console.log('Fetch Error :-S', err);
+      //   });
+      // Get full loan object, console log and populate some basic on screen information.
+      tpoAppObject.getLoanData().then(function (loanData) {
+          //console.log('Loan Data ===', loanData);
+          //Getting Appraisal Company Name
+          contactsList = loanData.Contacts;
+          contactsList.forEach((item, index) => {
+            if(item.ContactType === 'APPRAISAL_COMPANY')
+            {
+            console.log(item.Name);
+            appraisalCompany = item.Name;
+            }
+            if(item.ContactType === 'LOAN_OFFICER')
+            {
+              loFullName = item.Name;
+              loPhoneNum = item.Phone;
+              loEmail = item.Email;
+            }
+          });
+
+          //Setting loan officer name
+          borrowerName = loanData.Applications[0].Borrower.FullName;
+          transactionType = loanData.Property.LoanPurposeType;
+          // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
+          // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
+          // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
+
+          // loanData.Applications.forEach((item, index) => {
+          //   borrowerName = item.Borrower.FullName;
+          // });
+            myFunction();
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+    }
+    </script>
+</head>
+<body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
+</body>
+</html>
