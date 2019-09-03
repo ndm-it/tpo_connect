@@ -69,7 +69,7 @@
           var borrowerNameURL = "tfa_18=" + borrowerName + "&";
           var programTypeURL = "tfa_283=" + programType + "&"
           var transactionTypeURL = "tfa_293=" + transactionType;
-          var propertyTypeURL = "tfa_=" + propertyType + "&";
+          var propertyTypeURL = "tfa_243=" + propertyType + "&";
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
           var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + propertyTypeURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
@@ -109,9 +109,13 @@
           borrowerName = loanData.Applications[0].Borrower.FullName;
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
-          programType = ( programType==='Conventional' ? 'Conforming' : programType);
+          if(programType === 'Conventional') programType = 'Conforming';
+          //programType = ( programType==='Conventional' ? 'Conforming' : programType);
           propertyType = loanData.Uldd.AttachmentType;
-          propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
+          if(propertyType === 'Detached') propertyType = 'SFR';
+          if(propertyType === 'Condominium') propertyType = 'Condo';
+          //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
+          console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " property Type: " + propertyType);
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
           // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
           // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
