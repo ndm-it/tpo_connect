@@ -15,7 +15,7 @@
         var transactionType = "";
         var programType = "";
         var occupancy = "";
-        var fixedTerm = "";
+        var loanTerm = "";
         var armType = "";
         var propertyType = "";
         var compensation = "";
@@ -112,6 +112,8 @@
           programType = loanData.MortgageType;
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
+          loanTerm = loanData.LoanAmortizationTermMonths;
+          loanTerm = loanTerm / 12;
           //compensation = loanData.;
           if(programType === 'Conventional') {programType = 'Conforming';}
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
@@ -125,7 +127,7 @@
 
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
-          console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " propertyType: " + propertyType + " Occupancy: " + occupancy);
+          console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " propertyType: " + propertyType + " Occupancy: " + occupancy + " loan Term: " + loanTerm);
 
 
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
