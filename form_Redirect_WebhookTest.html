@@ -112,6 +112,7 @@
             }
             if(item.ContactType === 'LOAN_OFFICER')
             {
+              if(item.Name != 'undefined')
               loFullName = item.Name;
               loPhoneNum = item.Phone;
               loEmail = item.Email;
@@ -132,6 +133,19 @@
           amortizationType = loanData.LoanAmortizationType;
           compensation = loanData.RateLock.BorrLenderPaid;
           otherProgramType = loanData.LoanPurposeOfRefinanceType;
+
+
+          if(loFullName === 'undefined') {
+            loFullName = '';
+            loEmail = '';
+            loPhoneNum = '';
+          }
+
+          if(processorName === 'undefined'){
+            processorName = '';
+            processorEmail = '';
+            processorPhoneNum = '';
+          }
 
           if(transactionType === 'Purchase') { transactionType = 'Purchase'; }
           if(transactionType === 'NoCash-Out Refinance') { transactionType = 'Rate/Term Refinance'; }
