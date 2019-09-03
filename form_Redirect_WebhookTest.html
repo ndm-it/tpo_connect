@@ -114,6 +114,7 @@
           occupancy = loanData.Property.PropertyUsageType;
           loanTerm = loanData.LoanAmortizationTermMonths;
           loanTerm = loanTerm / 12;
+          loanTerm = loanTerm + " YR";
           //compensation = loanData.;
           if(programType === 'Conventional') {programType = 'Conforming';}
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
