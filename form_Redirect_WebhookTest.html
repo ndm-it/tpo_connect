@@ -108,6 +108,10 @@
           borrowerName = loanData.Applications[0].Borrower.FullName;
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
+          if(programType === 'Conventional')
+          {
+            programType = 'Conforming';
+          }
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
           // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
           // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
