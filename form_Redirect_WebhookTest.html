@@ -67,9 +67,11 @@
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
           var borrowerNameURL = "tfa_18=" + borrowerName + "&";
+          var programTypeURL = "tfa_283" + programType + "&"
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          document.location.href = "https://www.tfaforms.com/4760677" + loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + transactionTypeURL;
+          document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
           //window.open('https://www.actappraisal.com/#act-login', '_blank');
@@ -105,6 +107,7 @@
           //Setting loan officer name
           borrowerName = loanData.Applications[0].Borrower.FullName;
           transactionType = loanData.Property.LoanPurposeType;
+          programType = loanData.MortgageType;
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
           // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
           // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
