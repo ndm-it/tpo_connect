@@ -16,6 +16,7 @@
         var programType = "";
         var occupancy = "";
         var loanTerm = "";
+        var amortizationType = "";
         var armType = "";
         var propertyType = "";
         var compensation = "";
@@ -71,9 +72,10 @@
           var propertyTypeURL = "tfa_243=" + propertyType + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
           var loanTermURL = "tfa_265=" + loanTerm + "&";
+          var amortizationTypeURL = "tfa_310=" + amortizationType + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + loanTermURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + loanTermURL + amortizationTypeURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -114,6 +116,7 @@
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
           loanTerm = loanData.LoanAmortizationTermMonths;
+          amortizationType = loanData.LoanAmortizationType;
           loanTerm = loanTerm / 12;
           loanTerm = loanTerm + " YR";
           //compensation = loanData.;
@@ -127,9 +130,11 @@
           if(occupancy === 'SecondHome') { occupancy = 'Second Home';}
           if(occupancy === 'Investor') { occupancy = 'Investment (NOO)';}
 
+          if(amortizationType === 'Fixed') {amortizationType = 'Fixed Rate';}
+          if(amortizationType === 'AdjustableRate') {amortizationType = 'ARM';}
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
-          console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " propertyType: " + propertyType + " Occupancy: " + occupancy + " loan Term: " + loanTerm);
+          console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " propertyType: " + propertyType + " Occupancy: " + occupancy + " loan Term: " + loanTerm + " amortizationType: " + amortizationType);
 
 
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
