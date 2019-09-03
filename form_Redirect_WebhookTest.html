@@ -69,8 +69,9 @@
           var borrowerNameURL = "tfa_18=" + borrowerName + "&";
           var programTypeURL = "tfa_283=" + programType + "&"
           var transactionTypeURL = "tfa_293=" + transactionType;
+          var propertyTypeURL = "tfa_=" + propertyType + "&";
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + borrowerNameURL + programTypeURL + propertyTypeURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -108,10 +109,9 @@
           borrowerName = loanData.Applications[0].Borrower.FullName;
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
-          if(programType === 'Conventional')
-          {
-            programType = 'Conforming';
-          }
+          programType = ( programType==='Conventional' ? 'Conforming' : programType);
+          propertyType = loanData.Uldd.AttachmentType;
+          propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
           // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
           // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
