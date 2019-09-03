@@ -47,14 +47,14 @@
     function GetUserData() {
       // Get basic user info and console log only.
       tpoAppObject.getUserData().then(function (userData) {
-        console.log('User Data ===', userData);
+        //console.log('User Data ===', userData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
-        console.log('User Profile Data ===', userProfileData);
+        //console.log('User Profile Data ===', userProfileData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
@@ -88,7 +88,7 @@
       //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
-          //console.log('Loan Data ===', loanData);
+          console.log('Loan Data ===', loanData);
           //Getting Appraisal Company Name
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
@@ -109,11 +109,15 @@
           borrowerName = loanData.Applications[0].Borrower.FullName;
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
+          propertyType = loanData.Uldd.AttachmentType;
+          compensation = loanData.;
           if(programType === 'Conventional') {programType = 'Conforming';}
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
-          propertyType = loanData.Uldd.AttachmentType;
+
           if(propertyType === 'Detached'){ propertyType = 'SFR';}
           if(propertyType === 'Condominium') { propertyType = 'Condo'; }
+
+
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           console.log("value of borrowerName: " + borrowerName + " transactionType: " + transactionType + " programType: " + programType + " property Type: " + propertyType);
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
