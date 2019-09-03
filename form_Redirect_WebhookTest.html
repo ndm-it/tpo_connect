@@ -14,6 +14,7 @@
         var borrowerName = "";
         var transactionType = "";
         var programType = "";
+        var otherProgramType = "";
         var occupancy = "";
         var fixedLoanTerm = "";
         var amortizationType = "";
@@ -68,7 +69,7 @@
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
           var borrowerNameURL = "tfa_18=" + borrowerName + "&";
-          var programTypeURL = "tfa_283=" + programType + "&"
+          var programTypeURL = "tfa_283=" + programType + ";" + otherProgramType + "&"
           var propertyTypeURL = "tfa_243=" + propertyType + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
           var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
@@ -118,12 +119,17 @@
           occupancy = loanData.Property.PropertyUsageType;
           amortizationType = loanData.LoanAmortizationType;
           compensation = loanData.RateLock.BorrLenderPaid;
+          otherProgramType = loanData.LoanPurposeOfRefinanceType;
 
           if(transactionType === 'Purchase') { transactionType = 'Purchase'; }
           if(transactionType === 'NoCash-Out Refinance') { transactionType = 'Rate/Term Refinance'; }
           if(transactionType === 'Cash-Out Refinance') { transactionType = 'Cash-Out Refinance'; }
 
           if(programType === 'Conventional') {programType = 'Conforming';}
+          if(programType === 'FarmersHomeAdministration') { programType = 'USDA'; }
+          if(otherProgramType === 'InterestRateReductionRefinanceLoan') { otherProgramType = 'IRRRL'; }
+          if(otherProgramType === '') { otherProgramType = 'Streamline'; }
+
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
 
           if(propertyType === 'Detached'){ propertyType = 'SFR';}
