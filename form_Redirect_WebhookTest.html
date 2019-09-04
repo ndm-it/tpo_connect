@@ -147,14 +147,20 @@
             processorPhoneNum = '';
           }
 
-          if(transactionType === 'Purchase') { transactionType = 'Purchase'; }
+
           if(transactionType === 'NoCash-Out Refinance') { transactionType = 'Rate/Term Refinance'; }
           if(transactionType === 'Cash-Out Refinance') { transactionType = 'Cash-Out Refinance'; }
 
           if(programType === 'Conventional') {programType = 'Conforming';}
           if(programType === 'FarmersHomeAdministration') { programType = 'USDA'; }
-          if(otherProgramType === 'InterestRateReductionRefinanceLoan') { otherProgramType = 'IRRRL'; }
-          if(otherProgramType === '') { otherProgramType = 'Streamline'; }
+
+          if(transactionType === 'Purchase') { programType = 'N/A'; }
+          else {
+            if(otherProgramType === 'InterestRateReductionRefinanceLoan') { otherProgramType = 'IRRRL'; }
+            if(otherProgramType === 'FullDocumentation') { otherProgramType = 'Full Documentation'; }
+            if(otherProgramType === 'StreamlineWithoutAppraisal') { otherProgramType = 'Streamline'; }
+            if(otherProgramType === '') { otherProgramType = "N/A"; }
+          }
 
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
 
