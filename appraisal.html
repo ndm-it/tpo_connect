@@ -15,6 +15,7 @@
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
         this.tpoAppObject = tpoAppObject;
         $("div#processing").show();
+        GetUserData();
         $("div#processing").hide();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
@@ -34,6 +35,33 @@
      }
 
 
+    // Sample methods for getting various data objects, just console logging for illustrative purposes.
+    function GetUserData() {
+      // Get basic user info and console log only.
+      tpoAppObject.getUserData().then(function (userData) {
+        console.log('User Data ===', userData);
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+      // Get full user profile, console log and populate some basic on screen information.
+      tpoAppObject.getUserProfileData().then(function (userProfileData) {
+        console.log('User Profile Data ===', userProfileData);
+        if (typeof userProfileData.FirstName === 'undefined') {
+          $('#userAvailable').hide();
+        } else {
+          $('#userAvailable').show();
+            // Get a few fields for illustrative purposes.
+            $('#userName').html(userProfileData.FirstName + ' ' + userProfileData.LastName);
+          $('#userEmail').html(userProfileData.Email);
+          $('#userOrgId').html(userProfileData.ExternalOrgID);
+          $('#userId').html(userProfileData.ExternalUserID);
+        }
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+        }
 
 
         function myFunction(appraisalName) {
@@ -115,6 +143,12 @@
 
     function GetLoanData() {
       // Get loan summary and console log only.
+      // tpoAppObject.getLoanSummary().then(function (loanSummary) {
+      //   console.log('Loan Summary ===', loanSummary);
+      // })
+      //   .catch(function (err) {
+      //     console.log('Fetch Error :-S', err);
+      //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
