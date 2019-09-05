@@ -177,6 +177,7 @@
           $('#propertyCity').html(loanData.Property.City);
           $('#propertyState').html(loanData.Property.State);
           $('#propertyZip').html(loanData.Property.PostalCode);
+          document.getElementById("appraisalName").innerHTML = appraisalCompany;
           $('#appraiser').html(appraisalCompany);
           $('#processing').hide();
             $('#results').show();
@@ -208,6 +209,7 @@
             </div>
             <div id="loanAvailable" style="display: none;">
               <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
+              <h2>AMC:&nbsp;<span id="appraisalName"></span></h2>
               <button class="button" onclick="buttonFunction()">Request Appraisal</button>
             </div>
         </div>
