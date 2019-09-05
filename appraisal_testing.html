@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <meta http-equiv="X-UA-Compatible" content="IE=11" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.elliemae.io/elliemae/core/ssf/1.0/elli.ssf.guest-with-polyfill.js"></script>
@@ -15,9 +14,7 @@
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
         this.tpoAppObject = tpoAppObject;
-        $("div#processing").show();
         GetUserData();
-        $("div#processing").hide();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
 		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
@@ -27,24 +24,12 @@
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
-       $("div#processing").show();
        GetLoanData();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        this.loanData = loanData;
        console.log('loanOpen => loanData ===', loanData);
      }
-
-
-    // Sample methods for getting various data objects, just console logging for illustrative purposes.
-    function GetUserData() {
-      // Get basic user info and console log only.
-      tpoAppObject.getUserData().then(function (userData) {
-        console.log('User Data ===', userData);
-      })
-        .catch(function (err) {
-          console.log('Fetch Error :-S', err);
-        });
 
 
         function myFunction(appraisalName) {
@@ -126,6 +111,12 @@
 
     function GetLoanData() {
       // Get loan summary and console log only.
+      // tpoAppObject.getLoanSummary().then(function (loanSummary) {
+      //   console.log('Loan Summary ===', loanSummary);
+      // })
+      //   .catch(function (err) {
+      //     console.log('Fetch Error :-S', err);
+      //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
@@ -155,10 +146,8 @@
           $('#propertyState').html(loanData.Property.State);
           $('#propertyZip').html(loanData.Property.PostalCode);
           $('#appraiser').html(appraisalCompany);
-          $('#processing').hide();
-            $('#results').show();
-            myFunction(appraisalCompany);
-
+          $('#results').show();
+          myFunction(appraisalCompany);
         }
       })
         .catch(function (err) {
@@ -175,9 +164,6 @@
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
     <div style="padding-left: 30px;">
         <div>
-          <div id="processing">
-            <h2>Pulling Assigned AMC</h2>
-          </div>
             <div id="userAvailable" style="display: none;">
                 <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
             </div>
