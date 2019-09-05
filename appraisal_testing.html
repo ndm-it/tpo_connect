@@ -14,7 +14,9 @@
       elli.script.guest.create();
       elli.script.getObject("tpoApplication").then(function (tpoAppObject) {
         this.tpoAppObject = tpoAppObject;
+        $("div#processing").show();
         //GetUserData();
+        $("div#processing").hide();
 
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
 		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
@@ -24,12 +26,42 @@
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
+       $("div#processing").show();
        GetLoanData();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        this.loanData = loanData;
        console.log('loanOpen => loanData ===', loanData);
      }
+
+
+    // Sample methods for getting various data objects, just console logging for illustrative purposes.
+    function GetUserData() {
+      // Get basic user info and console log only.
+      tpoAppObject.getUserData().then(function (userData) {
+        console.log('User Data ===', userData);
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+      // Get full user profile, console log and populate some basic on screen information.
+      tpoAppObject.getUserProfileData().then(function (userProfileData) {
+        console.log('User Profile Data ===', userProfileData);
+        if (typeof userProfileData.FirstName === 'undefined') {
+          $('#userAvailable').hide();
+        } else {
+          $('#userAvailable').show();
+            // Get a few fields for illustrative purposes.
+            $('#userName').html(userProfileData.FirstName + ' ' + userProfileData.LastName);
+          $('#userEmail').html(userProfileData.Email);
+          $('#userOrgId').html(userProfileData.ExternalOrgID);
+          $('#userId').html(userProfileData.ExternalUserID);
+        }
+      })
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
+        });
+        }
 
 
         function myFunction(appraisalName) {
@@ -70,7 +102,7 @@
                 else if (appraisalName.toLowerCase().includes('equity solutions usa')) {
                     window.open('https://esusa.appraisalscope.com/', '_blank');
                 }
-                else if (appraisalName.toLowerCase().includes('first choice appraisal management')) {
+                else if (appraisalName.toLowerCase().includes('first choice appraisal management inc')) {
                     window.open('http://www.firstchoiceamc.com', '_blank');
                 }
                 else if (appraisalName.toLowerCase().includes('golden state amc')) {
@@ -100,7 +132,7 @@
                 else if (appraisalName.toLowerCase().includes('settlement one valuation (port retention only)')) {
                     window.open('', '_blank');
                 }
-                else if (appraisalName.toLowerCase().includes('So Cal Direct')) {
+                else if (appraisalName.toLowerCase().includes('so cal direct')) {
                     window.open('https://socaldirect.myvalutrac.com', '_blank');
                 }
             }
@@ -146,8 +178,10 @@
           $('#propertyState').html(loanData.Property.State);
           $('#propertyZip').html(loanData.Property.PostalCode);
           $('#appraiser').html(appraisalCompany);
-          $('#results').show();
-          myFunction(appraisalCompany);
+          $('#processing').hide();
+            $('#results').show();
+            myFunction(appraisalCompany);
+
         }
       })
         .catch(function (err) {
@@ -164,6 +198,9 @@
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
     <div style="padding-left: 30px;">
         <div>
+          <div id="processing">
+            <h2>Pulling Assigned AMC</h2>
+          </div>
             <div id="userAvailable" style="display: none;">
                 <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
             </div>
