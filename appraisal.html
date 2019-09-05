@@ -31,7 +31,7 @@
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
        this.loanData = loanData;
-       //console.log('loanOpen => loanData ===', loanData);
+       console.log('loanOpen => loanData ===', loanData);
      }
 
 
@@ -39,14 +39,14 @@
     function GetUserData() {
       // Get basic user info and console log only.
       tpoAppObject.getUserData().then(function (userData) {
-        //console.log('User Data ===', userData);
+        console.log('User Data ===', userData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
-        //console.log('User Profile Data ===', userProfileData);
+        console.log('User Profile Data ===', userProfileData);
         if (typeof userProfileData.FirstName === 'undefined') {
           $('#userAvailable').hide();
         } else {
@@ -66,7 +66,7 @@
 
         function myFunction(appraisalName) {
             if (appraisalName) {
-                if (appraisalName.includes('Act Appraisal')) {
+                if (appraisalName.toLowerCase().includes('act appraisal')) {
                     window.open('https://www.actappraisal.com/#act-login', '_blank');
                 }
                 else if (appraisalName.includes('AMC Appraisal Management Company, LLC')) {
@@ -201,9 +201,6 @@
           <div id="processing">
             <h2>Pulling Assigned AMC</h2>
           </div>
-            <div id="userNotAvailable">
-                <h2>User Not Logged In</h2>
-            </div>
             <div id="userAvailable" style="display: none;">
                 <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
             </div>
