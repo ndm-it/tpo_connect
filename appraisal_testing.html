@@ -22,7 +22,7 @@
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
      elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
      function onLoanOpened(proxy, loanData) {
-       $("div#processing").show();
+       $('#processing').show();
        GetLoanData();
        $("div#loanAvailable").show();
        $("div#loanNotAvailable").hide();
@@ -112,7 +112,6 @@
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
           //console.log('Loan Data ===', loanData);
-          //Testing the contact list out
           contactsList = loanData.Contacts;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
@@ -121,19 +120,17 @@
             appraisalCompany = item.Name;
             }
           });
-          //console.log(contactsList);
           //appraisalCompany = loanData.UnderwriterSummary.OriginalAppraiser;
         if (typeof loanData.LoanNumber === 'undefined') {
           $('#loanNotAvailable').show();
           $('#loanAvailable').hide();
         } else {
           $('#loanNotAvailable').hide();
-          $('#loanAvailable').show();
-          // Get a few property address level fields for illustrative purposes.
-          //document.getElementById("appraisalName").innerHTML = appraisalCompany;
-          $('#appraiser').html(appraisalCompany);
           $('#processing').hide();
           myFunction(appraisalCompany);
+          $('#loanAvailable').show();
+          //document.getElementById("appraisalName").innerHTML = appraisalCompany;
+          $('#appraiser').html(appraisalCompany);
         }
       })
         .catch(function (err) {
@@ -148,23 +145,21 @@
     </script>
 </head>
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
-    <div style="padding-left: 30px;">
-        <div>
-          <div id="processing">
-            <h2>Pulling Assigned AMC</h2>
-          </div>
-            <div id="userAvailable" style="display: none;">
-            </div>
-            <div id="loanNotAvailable">
-                <h2>No Loan Selected</h2>
-            </div>
-            <div id="loanAvailable" style="display: none;">
-              <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
-              <!--<h2>AMC:&nbsp;<span id="appraisalName"></span></h2>-->
-              <button class="button" onclick="buttonFunction()">Request Appraisal</button>
-            </div>
-        </div>
-        <hr style="clear: both" />
+  <div style="padding-left: 30px;">
+    <div>
+      <div id="processing">
+        <h2>Pulling Assigned AMC</h2>
+      </div>
+      <div id="loanNotAvailable">
+        <h2>No Loan Selected</h2>
+      </div>
+      <div id="loanAvailable" style="display: none;">
+        <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
+        <!--<h2>AMC:&nbsp;<span id="appraisalName"></span></h2>-->
+        <button class="button" onclick="buttonFunction()">Request Appraisal</button>
+      </div>
     </div>
+    <hr style="clear: both" />
+  </div>
 </body>
 </html>
