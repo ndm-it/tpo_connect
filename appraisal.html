@@ -137,6 +137,10 @@
                 }
             }
             else {
+              $('#userAvailable').hide();
+              $('#loanAvailable').hide();
+              $('#noAMCAssigned').show();
+
                 console.log('No appraisal company assigned');
             }
         }
@@ -203,6 +207,10 @@
           </div>
             <div id="userAvailable" style="display: none;">
                 <h2>AMC:&nbsp;<span id="appraiser"></span></h2>
+            </div>
+            <div id="noAMCAssigned" style="display: none;">
+                <h2>No AMC Selected</h2>
+                <h3>Please contact your Account Manager for assistance</h3>
             </div>
             <div id="loanNotAvailable">
                 <h2>No Loan Selected</h2>
