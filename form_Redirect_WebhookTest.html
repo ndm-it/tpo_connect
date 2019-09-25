@@ -7,6 +7,7 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
+        var loanGuid = "";
         var loFullName = "";
         var loPhoneNum = "";
         var loEmail = "";
@@ -82,9 +83,10 @@
           var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
           var amortizationTypeURL = "tfa_310=" + amortizationType + "&";
           var compensationURL = "tfa_249=" + compensation + "&";
+          var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + loPhoneNumURL + loEmailURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -104,6 +106,7 @@
           console.log('Loan Data ===', loanData);
           //Getting Appraisal Company Name
           contactsList = loanData.Contacts;
+          loanGuid = loanData.EncompassId;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
             {
