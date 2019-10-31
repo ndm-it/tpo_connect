@@ -114,14 +114,16 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
-	      console.log(loanProgramName);
-	      if(loanProgramName.includes('HB')) 
-	      {
+	  if(loanProgramName !== null) {
+	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'High Balance';
 	      }
-	      else {
-		      highBalance = 'false';
-	      }
+	     else {
+		highBalance = 'false';
+	     } 
+	  }
+	      else { highBalance = 'false'; }
+	      
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
             {
