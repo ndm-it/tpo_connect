@@ -114,7 +114,7 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
-	  if(loanProgramName !== null) {
+	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'High Balance';
 	      }
