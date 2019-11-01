@@ -164,7 +164,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           //Setting loan officer name
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
-	      if(loanData.Applications[0].CoBorrower. == 'Individual')
+	      if(loanData.Applications[0].CoBorrower.BorrowerType == 'Individual')
 		 {
 		 CoBorrowerFirstName = '';
 		 CoBorrowerLastName = '';
