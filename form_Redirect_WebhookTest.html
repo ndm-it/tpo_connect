@@ -79,7 +79,7 @@
         function myFunction() {
           var loFullNameURL = "?tfa_2=" + loFullName + "&";
           var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
-		var userFullNameURL = "tfa_412=" + userFullName + "&";
+		var userFullNameURL = "tfa_412=" + user_FullName + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
@@ -122,7 +122,6 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
-	      userFullName = 
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
 	  if(loanProgramName) {
@@ -219,7 +218,7 @@
           " BorrowerName: " + borrowerName + " CoborrowerName: " + CoBorrowerName + " TransactionType: " + transactionType +
           " ProgramType: " + programType + " RefinanceType: " + refinanceType + " PropertyType: " + propertyType +
           " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + " AmortizationType: " + amortizationType +
-          " Compensation: " + compensation + " High Balance: " + highBalance);
+          " Compensation: " + compensation + " High Balance: " + highBalance + " user full name: " + user_FullName);
 
 
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
