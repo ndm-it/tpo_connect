@@ -134,7 +134,7 @@
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
             {
-            console.log(item.Name);
+            //console.log(item.Name);
             appraisalCompany = item.Name;
             }
             if(item.ContactType === 'LOAN_OFFICER')
@@ -215,7 +215,7 @@
           " BorrowerName: " + borrowerName + " CoborrowerName: " + CoBorrowerName + " TransactionType: " + transactionType +
           " ProgramType: " + programType + " RefinanceType: " + refinanceType + " PropertyType: " + propertyType +
           " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + " AmortizationType: " + amortizationType +
-          " Compensation: " + compensation);
+          " Compensation: " + compensation + " High Balance: " + highBalance);
 
 
           // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
