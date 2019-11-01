@@ -82,6 +82,7 @@
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
 	var highBalanceURL = "tfa_324=" + highBalance + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
+	  var loNMLSURL = "tfa_10 + loNMLS + "&";
           var processorNameURL = "tfa_303=" + processorName + "&";
           var processorEmailURL = "tfa_305=" + processorEmail + "&";
           var processorPhoneNumURL = "tfa_304=" + processorPhoneNum + "&";
@@ -95,7 +96,7 @@
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + whoPaidURL + loPhoneNumURL + loEmailURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -118,6 +119,7 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
+	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
