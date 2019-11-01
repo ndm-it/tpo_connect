@@ -8,6 +8,7 @@
         var tpoAppObject = null;
         var appraisalCompany = "";
 	var whoPaid = "";
+	var refinanceType = "";
 	var loanNumber = "";
 	var loanProgramName = "";
 	var highBalance = "";
@@ -75,6 +76,7 @@
 
         function myFunction() {
           var loFullNameURL = "?tfa_2=" + loFullName + "&";
+          var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
@@ -84,7 +86,7 @@
           var processorEmailURL = "tfa_305=" + processorEmail + "&";
           var processorPhoneNumURL = "tfa_304=" + processorPhoneNum + "&";
           var borrowerNameURL = "tfa_18=" + borrowerName + "&";
-          var programTypeURL = "tfa_283=" + programType + ";" + otherProgramType + "&";
+          var programTypeURL = "tfa_283=" + programType + "&";
           var propertyTypeURL = "tfa_243=" + propertyType + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
           var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
@@ -93,7 +95,7 @@
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + whoPaidURL + loPhoneNumURL + loEmailURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + whoPaidURL + loPhoneNumURL + loEmailURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -155,7 +157,7 @@
           occupancy = loanData.Property.PropertyUsageType;
           amortizationType = loanData.LoanAmortizationType;
           compensation = loanData.RateLock.BorrLenderPaid;
-          otherProgramType = loanData.LoanPurposeOfRefinanceType;
+          refinanceType = loanData.LoanPurposeOfRefinanceType;
 
 
           if(loFullName == null) {
@@ -177,12 +179,12 @@
           if(programType === 'Conventional') {programType = 'Conforming';}
           if(programType === 'FarmersHomeAdministration') { programType = 'USDA'; }
 
-          if(transactionType === 'Purchase') { programType = 'N/A'; }
+          if(transactionType === 'Purchase') { refinanceType = 'N/A'; }
           else {
-            if(otherProgramType === 'InterestRateReductionRefinanceLoan') { otherProgramType = 'IRRRL'; }
-            if(otherProgramType === 'FullDocumentation') { otherProgramType = 'Full Documentation'; }
-            if(otherProgramType === 'StreamlineWithoutAppraisal') { otherProgramType = 'Streamline'; }
-            if(otherProgramType === '') { otherProgramType = "N/A"; }
+            if(refinanceType === 'InterestRateReductionRefinanceLoan') { refinanceType = 'IRRRL'; }
+            if(refinanceType === 'FullDocumentation') { refinanceType = 'Full Documentation'; }
+            if(refinanceType === 'StreamlineWithoutAppraisal') { refinanceType = 'Streamline'; }
+            if(refinanceType === '') { refinanceType = "N/A"; }
           }
 
           //programType = ( programType==='Conventional' ? 'Conforming' : programType);
@@ -209,7 +211,7 @@
           console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
           " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " + processorPhoneNum +
           " BorrowerName: " + borrowerName + " CoborrowerName: " + CoBorrowerName + " TransactionType: " + transactionType +
-          " ProgramType: " + programType + " OtherProgramType: " + otherProgramType + " PropertyType: " + propertyType +
+          " ProgramType: " + programType + " OtherProgramType: " + refinanceType + " PropertyType: " + propertyType +
           " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + " AmortizationType: " + amortizationType +
           " Compensation: " + compensation);
 
