@@ -8,6 +8,7 @@
         var tpoAppObject = null;
         var appraisalCompany = "";
 	    var user_FullName = "";
+	    var user_Email = "";
 	var whoPaid = "";
 	var refinanceType = "";
 	var loanNumber = "";
@@ -61,6 +62,7 @@
       // Get basic user info and console log only.
       tpoAppObject.getUserData().then(function (userData) {
 	      user_FullName = userData.userFullName;
+	      user_Email = userData.email;
         console.log('User Data ===', userData);
       })
         .catch(function (err) {
@@ -80,6 +82,7 @@
           var loFullNameURL = "?tfa_2=" + loFullName + "&";
           var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
 		var userFullNameURL = "tfa_412=" + user_FullName + "&";
+var userEmailURL = "tfa_413=" + user_Email + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
@@ -99,7 +102,7 @@
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
