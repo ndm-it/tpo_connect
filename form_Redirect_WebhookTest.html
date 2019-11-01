@@ -232,7 +232,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
           " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " + processorPhoneNum +
-          " BorrowerName: " + borrowerName + " CoborrowerName: " + CoBorrowerName + " TransactionType: " + transactionType +
+          " BorrowerName: " + borrowerFirstName + " CoborrowerFirstName: " + CoBorrowerFirstName + " TransactionType: " + transactionType +
           " ProgramType: " + programType + " RefinanceType: " + refinanceType + " PropertyType: " + propertyType +
           " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + " AmortizationType: " + amortizationType +
           " Compensation: " + compensation + " High Balance: " + highBalance + " user full name: " + user_FullName);
@@ -243,7 +243,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
 
           // loanData.Applications.forEach((item, index) => {
-          //   borrowerName = item.Borrower.FullName;
+          //   borrowerFirstName = item.Borrower.FullName;
           // });
             myFunction();
       })
