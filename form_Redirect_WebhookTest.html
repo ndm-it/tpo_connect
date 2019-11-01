@@ -123,13 +123,13 @@
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
-	        highBalance = 'True';
+	        highBalance = 'Yes';
 	      }
 	     else {
-		highBalance = 'False';
+		highBalance = 'No';
 	     } 
 	  }
-	      else { highBalance = 'False'; }
+	      else { highBalance = 'No'; }
 	      
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
