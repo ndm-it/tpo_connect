@@ -136,6 +136,9 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
 	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
+	      if(compAmountPaid == null) {
+		      compAmountPaid = '';
+	      }
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'Yes';
