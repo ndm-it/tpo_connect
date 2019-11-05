@@ -10,6 +10,7 @@
 	    var user_FullName = "";
 	    var user_Email = "";
 	var whoPaid = "";
+	var compAmountPaid = "";
 	var refinanceType = "";
 	var loanNumber = "";
 	var loanProgramName = "";
@@ -85,6 +86,7 @@
 		var userFullNameURL = "tfa_412=" + user_FullName + "&";
 var userEmailURL = "tfa_413=" + user_Email + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
+	  var compAmountPaidURL = "tfa_=" + compAmountPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
 	var highBalanceURL = "tfa_324=" + highBalance + "&";
@@ -106,7 +108,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + userEmailURL + whoPaidURL + compAmountPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -131,6 +133,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  loanProgramName = loanData.LoanProgramName;
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
+	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'Yes';
