@@ -20,6 +20,10 @@
         var loPhoneNum = "";
         var loEmail = "";
         var loNMLS = "";
+	var fundingFeeList = "";
+	var loanOriginationFees = "";
+	var processingFees = "";
+	var IH_Fee = "";
         var processorName = "";
         var processorPhoneNum = "";
         var processorEmail = "";
@@ -86,6 +90,9 @@
           var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
 		var userFullNameURL = "tfa_412=" + user_FullName + "&";
 var userEmailURL = "tfa_413=" + user_Email + "&";
+		var loanOriginationFeesURL = "?tfa_630=" + loanOriginationFees + "&";
+		var processingFeesURL = "?tfa_631=" + processingFees + "&";
+		var IH_FeeURL = "?tfa_632=" + IH_Fee + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
 	  var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
@@ -110,7 +117,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + userEmailURL + whoPaidURL + compAmountPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + userFullNameURL + userEmailURL + whoPaidURL + compAmountPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -187,6 +194,61 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           amortizationType = loanData.LoanAmortizationType;
           compensation = loanData.RateLock.BorrLenderPaid;
           refinanceType = loanData.LoanPurposeOfRefinanceType;
+	      fundingFeeList = loanData.FundingFeeList;
+	      //Finding 801a or field 454
+if(fundingFeeList.includes("801a."))
+{
+  var begIndex = fundingFeeList.indexOf("801a.");
+  var lastIndex = fundingFeeList.length-1;
+  var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
+  var endIndex = 0;
+  if(shortenedList.indexOf("\n") == -1){
+    console.log("No return character");
+  }
+  else {
+    endIndex = shortenedList.indexOf("\n");
+    var lastSubstring = shortenedList.substring(0,endIndex);
+	  loanOriginationFees = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+        console.log(loanOriginationFees);
+
+  }
+}
+
+  //Finding 801c or Field 1621
+if(fundingFeeList.includes("801c."))
+{
+  var begIndex = fundingFeeList.indexOf("801c.");
+  var lastIndex = fundingFeeList.length-1;
+  var shortString = fundingFeeList.substring(begIndex,lastIndex);
+  var endIndex = 0;
+  if(shortString.indexOf("\n") == -1){
+    console.log("No return character");
+  }
+  else {
+    endIndex = shortString.indexOf("\n");
+    var lastSubstring = shortString.substring(0,endIndex);
+    processingFees = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+    console.log(processingFees);
+  }
+}
+  
+    //Finding 813 or Field 370
+if(fundingFeeList.includes("813."))
+{
+  var begIndex = fundingFeeList.indexOf("813.");
+  var lastIndex = fundingFeeList.length-1;
+  var shortString = fundingFeeList.substring(begIndex,lastIndex);
+  var endIndex = 0;
+  if(shortString.indexOf("\n") == -1){
+    console.log("No return character");
+  }
+  else {
+    endIndex = shortString.indexOf("\n");
+    var lastSubstring = shortString.substring(0,endIndex);
+	  IH_Fee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+    console.log(IH_Fee);
+  }
+}
 
 
           if(loFullName == null) {
