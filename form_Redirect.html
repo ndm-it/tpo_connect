@@ -24,6 +24,7 @@
 	var loanOriginationFees = "";
 	var processingFees = "";
 	var IH_Fee = "";
+	var feeExists = "";
         var processorName = "";
         var processorPhoneNum = "";
         var processorEmail = "";
@@ -93,6 +94,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 		var loanOriginationFeesURL = "tfa_252=" + loanOriginationFees + "&";
 		var processingFeesURL = "tfa_631=" + processingFees + "&";
 		var IH_FeeURL = "tfa_632=" + IH_Fee + "&";
+		var feeExistsURL = "tfa_636=" + feeExists + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
 	  //var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
@@ -117,7 +119,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -213,6 +215,9 @@ if(fundingFeeList.includes("801a."))
 
   }
 }
+	      else {
+		      loanOriginationFees = "";
+	      }
 
   //Finding 801c or Field 1621
 if(fundingFeeList.includes("801c."))
@@ -231,6 +236,9 @@ if(fundingFeeList.includes("801c."))
     console.log(processingFees);
   }
 }
+	      else {
+		      processingFees = "";
+	      }
   
     //Finding 813 or Field 370
 if(fundingFeeList.includes("813."))
@@ -249,6 +257,18 @@ if(fundingFeeList.includes("813."))
     console.log(IH_Fee);
   }
 }
+else
+{
+  IH_Fee = "";
+}
+	      
+	      if(IH_Fee != ""|| processingFees != "")
+		 {
+		 feeExists = 'Yes';
+		 }
+	      else {
+		      feeExists = 'No';
+	      }
 
 
           if(loFullName == null) {
