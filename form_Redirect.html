@@ -160,10 +160,10 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      }
 	     else {
 		highBalance = 'No';
-	     } 
+	     }
 	  }
 	      else { highBalance = 'No'; }
-	      
+
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
             {
@@ -209,8 +209,8 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      tpoLOEmail = loanData.TPO.LOEmail;
 	      tpoProcEmail = loanData.TPO.LPEmail;
 	      //tpoPOCEmail = loanData.
-	      
-	      
+
+
 	      //Finding 801a or field 454
 if(fundingFeeList.includes("801a."))
 {
@@ -253,7 +253,7 @@ if(fundingFeeList.includes("801c."))
 	      else {
 		      processingFees = "";
 	      }
-  
+
     //Finding 813 or Field 370
 if(fundingFeeList.includes("813."))
 {
@@ -275,7 +275,7 @@ else
 {
   IH_Fee = "";
 }
-	      
+
 	      if(IH_Fee != ""|| processingFees != "")
 		 {
 		 feeExists = 'Yes';
