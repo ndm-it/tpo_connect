@@ -7,11 +7,11 @@
     <script>
         var tpoAppObject = null;
         var appraisalCompany = "";
-	    var user_FullName = "";
-	    var user_Email = "";
-	    var tpoLOEmail = "";
-	    var tpoProcEmail = "";
-	    var tpoPOCEmail = "";
+	var user_FullName = "";
+	var user_Email = "";
+	var tpoLOEmail = "";
+	var tpoProcEmail = "";
+	var tpoPOCEmail = "";
 	var whoPaid = "";
 	var compAmountPaid = "";
 	var refinanceType = "";
@@ -35,8 +35,10 @@
 	var borrowerType = "";
         var borrowerFirstName = "";
 	var borrowerLastName = "";
+	var borrowerEmail = "";
         var CoBorrowerFirstName = "";
 	var CoBorrowerLastName = "";
+	var CoBorrowerEmail = "";
         var transactionType = "";
         var programType = "";
         var otherProgramType = "";
@@ -114,8 +116,10 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  var borrowerTypeURL = "tfa_417=" + borrowerType + "&";
           var borrowerFirstNameURL = "tfa_18=" + borrowerFirstName + "&";
 	  var borrowerLastNameURL = "tfa_20=" + borrowerLastName + "&";
+	  var borrowerEmailURL = "tfa_690=" + borrowerEmail + "&";
 	  var CoBorrowerFirstNameURL = "tfa_414=" + CoBorrowerFirstName + "&";
 	  var CoBorrowerLastNameURL = "tfa_416=" + CoBorrowerLastName + "&";
+	  var CoBorrowerEmailURL = "tfa_691=" + CoBorrowerEmail + "&";
           var programTypeURL = "tfa_283=" + programType + "&";
           var propertyTypeURL = "tfa_243=" + propertyType + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
@@ -125,7 +129,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -190,13 +194,15 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           //Setting loan officer name
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
+	  borrowerEmail = loanData.Applications[0].Borrower.EmailAddressText;
 	      if(loanData.Applications[0].Coborrower.BorrowerType == 'Individual')
 		 {
 			 borrowerType = 'Individual';
 		 }
 	      else {
 		      CoBorrowerFirstName = loanData.Applications[0].Coborrower.FirstName;
-	  CoBorrowerLastName = loanData.Applications[0].Coborrower.LastName;
+		      CoBorrowerLastName = loanData.Applications[0].Coborrower.LastName;
+		      CoBorrowerEmail = loanData.Applications[0].Coborrower.EmailAddressText;
 	      }
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
