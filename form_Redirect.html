@@ -12,6 +12,7 @@
 	var tpoLOEmail = "";
 	var tpoProcEmail = "";
 	var tpoPOCEmail = "";
+	var leIssuedBy = "";
 	var whoPaid = "";
 	var compAmountPaid = "";
 	var refinanceType = "";
@@ -103,6 +104,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 		var tpoLOEmailURL = "tfa_663=" + tpoLOEmail + "&";
 		var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
 		var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
+		var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
 	  //var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
@@ -125,11 +127,13 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
           var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
           var amortizationTypeURL = "tfa_310=" + amortizationType + "&";
-          var compensationURL = "tfa_249=" + compensation + "&";
+          var compensationURL = "
+	  
+	  =" + compensation + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -154,6 +158,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  loanProgramName = loanData.LoanProgramName;
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
+	      leIssuedBy = loanData.TPO.LEIssuedBy;
 	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
 	      if(compAmountPaid == null) {
 		      compAmountPaid = '';
