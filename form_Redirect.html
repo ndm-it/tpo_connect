@@ -170,9 +170,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	     else {
 		highBalance = 'No';
 	     }
-	  }
-	      else { highBalance = 'No'; }
-	      if(loanProgramName.includes('Prime')){
+		  if(loanProgramName.includes('Prime')){
 		      productType = 'Prime Direct';
 	      }
 	      else if(loanProgramName.includes('Credit Direct')){
@@ -187,6 +185,9 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      else if(loanProgramName.includes('DCR Direct')){
 		      productType = 'DCR Direct';
 	      }
+	  }
+	      else { highBalance = 'No'; }
+	      
 
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
