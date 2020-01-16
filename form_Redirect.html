@@ -24,6 +24,7 @@
         var loPhoneNum = "";
         var loEmail = "";
         var loNMLS = "";
+	var discloseDate = "";
 	var fundingFeeList = "";
 	var loanOriginationFees = "";
 	var processingFees = "";
@@ -106,6 +107,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 		var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
 		var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
 		var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
+		var discloseDateURL = "tfa_719=" + discloseDate + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
 	  var productTypeURL = "tfa_720=" + productType + "&";
 	  //var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
@@ -133,7 +135,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + productTypeURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + tpoProcEmailURL + productTypeURL + discloseDateURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4760677" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4759136?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4759136?tfa_2=' + loFullName,'_blank');
@@ -188,6 +190,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  }
 	      else { highBalance = 'No'; }
 	      
+	      discloseDate = RegulationZ.initialDisclosureProvidedDate;
 
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'APPRAISAL_COMPANY')
