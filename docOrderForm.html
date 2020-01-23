@@ -116,6 +116,7 @@
           }
         });
         titleCo = loanData.ClosingCost.TitleCompanyName;
+        titleCo.replace(/&/g, "AND");
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
