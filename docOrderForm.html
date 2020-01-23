@@ -92,8 +92,13 @@
           var titleCoURL = "tfa_6=" + titleCo + "&";
           var titlePhoneNumURL = "tfa_8=" + titlePhoneNum + "&";
           var titleContactURL = "tfa_9=" + titleContact + "&";
+          var escrowCoURL = "tfa_11=" + escrowCo + "&";
+          var escrowPhoneURL = "tfa_12=" + escrowPhone + "&";
+          var escrowContactURL = "tfa_14=" + escrowContact + "&";
+          var escrowEmailURL = "tfa_15=" + escrowEmail + "&";
 
-          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL + titlePhoneNumURL + titleContactURL;
+          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL + 
+          titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -114,9 +119,15 @@
             titlePhoneNum = item.Phone;
             titleContact = item.ContactName;
           }
+          if(item.ContactType === 'ESCROW_COMPANY'){
+            escrowPhone = item.Phone;
+            escrowContact = item.ContactName;
+            escrowEmail = item.Email;
+          }
+          
         });
         titleCo = loanData.ClosingCost.TitleCompanyName.replace(/&/g, "AND");
-        //titleCo = titleCo.replace(/&/g, "AND");
+        escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
