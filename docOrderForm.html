@@ -22,7 +22,10 @@
         //Need to pull value from 1870 for POA, but didn't do it yet.
         var poa = "";
         var vestingText = "";
-        
+        var firstPaymentDate = "";
+        var loanProgram = "";
+
+        var estimatedClosingDate = "";
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -76,10 +79,10 @@
           var escrowContactURL = "tfa_14=" + escrowContact + "&";
           var escrowEmailURL = "tfa_15=" + escrowEmail + "&";
           var vestingTextURL = "tfa_27=" + vestingText + "&";
-
-          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL + 
+          var loanProgramURL = "tfa_31=" + loanProgram + "&";
+          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
-          vestingTextURL;
+          vestingTextURL + loanProgramURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -108,7 +111,7 @@
               escrowEmail = item.Email;
             }
           }
-          
+
         });
         if(loanData.ClosingCost.TitleCompanyName){
           titleCo = loanData.ClosingCost.TitleCompanyName.replace(/&/g, "AND");
@@ -117,6 +120,17 @@
           escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
         }
         vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
+        //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
+        //estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
+        //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
+        //firstPaymentDate = loanData.loanProductData.scheduledFirstPaymentDate;
+        loanProgram = loanData.loanProgramName;
+
+
+loanProductData.loanScheduledClosingDate
+
+
+
 
         console.log("Borrower First Name: " + borrowerFirstName);
 
