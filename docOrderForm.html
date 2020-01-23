@@ -122,12 +122,18 @@
           if(item.ContactType === 'ESCROW_COMPANY'){
             escrowPhone = item.Phone;
             escrowContact = item.ContactName;
-            escrowEmail = item.Email;
+            if(item.Email){
+              escrowEmail = item.Email;
+            }
           }
           
         });
-        titleCo = loanData.ClosingCost.TitleCompanyName.replace(/&/g, "AND");
-        escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
+        if(loanData.ClosingCost.TitleCompanyName){
+          titleCo = loanData.ClosingCost.TitleCompanyName.replace(/&/g, "AND");
+        }
+        if(loanData.ClosingCost.EscrowCompanyName){
+          escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
+        }
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
