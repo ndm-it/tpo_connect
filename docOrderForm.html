@@ -10,9 +10,9 @@
         var borrowerLastName = "";
         var brokerName = "";
         var accountManager = "";
-        var TitleCo = "";
-        var TitlePhoneNum = "";
-        var TitleContact = "";
+        var titleCo = "";
+        var titlePhoneNum = "";
+        var titleContact = "";
         var escrowCo = "";
         var escrowPhone = "";
         var escrowContact = "";
@@ -89,11 +89,11 @@
           var borrowerFirstNameURL = "tfa_2=" + borrowerFirstName + "&";
           var brokerNameURL = "tfa_3=" + brokerName + "&";
           var accountManagerURL = "tfa_5=" + accountManager + "&";
-          var TitleCoURL = "tfa_6=" + TitleCo + "&";
-          var TitlePhoneNumURL = "tfa_8=" + TitlePhoneNum + "&";
-          var TitleContactURL = "tfa_9=" + TitleContact + "&";
+          var titleCoURL = "tfa_6=" + titleCo + "&";
+          var titlePhoneNumURL = "tfa_8=" + titlePhoneNum + "&";
+          var titleContactURL = "tfa_9=" + titleContact + "&";
 
-          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + TitleCoURL + TitlePhoneNumURL + TitleContactURL;
+          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL + titlePhoneNumURL + titleContactURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -108,10 +108,10 @@
           accountManager = item.Name;
         }
         if(item.ContactType === 'TITLE_COMPANY'){
-          TitlePhoneNum = item.phone;
-          TitleContact = item.contactName;
+          titlePhoneNum = item.phone;
+          titleContact = item.contactName;
         }
-        TitleCo = loanData.ClosingCost.TitleCompanyName;
+        titleCo = loanData.ClosingCost.TitleCompanyName;
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
