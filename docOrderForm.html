@@ -30,6 +30,7 @@
         //Need to figure out exact wording for choices
         var transactionType = "";
         var impounds = "";
+        var interestRate = "";
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -86,6 +87,7 @@
           var loanProgramURL = "tfa_31=" + loanProgram + "&";
           var transactionTypeURL = "tfa_32=" + transactionType + "&";
           var impoundsURL = "tfa_38=" + impounds + "&";
+          var interestRateURL = "tfa_43=" + interestRate + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL;
@@ -157,6 +159,7 @@
             break;
           default:
         }
+        interestRate = loanData.initialInterestRate;
 
 
         console.log("Borrower First Name: " + borrowerFirstName);
