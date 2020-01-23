@@ -115,8 +115,7 @@
       //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
-        borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName;
-        borrowerFirstName = borrowerFirstName + ' ' + loanData.Applications[0].Borrower.LastName;
+        borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
         brokerName = loanData.TPO.CompanyLegalName;
           
           loanGuid = loanData.EncompassId;
