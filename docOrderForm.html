@@ -140,13 +140,6 @@
             }
           });
 
-          //Setting loan officer name
-          borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
-	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
-
-		      CoBorrowerFirstName = loanData.Applications[0].Coborrower.FirstName;
-	  CoBorrowerLastName = loanData.Applications[0].Coborrower.LastName;
-	      
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
           propertyType = loanData.Uldd.AttachmentType;
