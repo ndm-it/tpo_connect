@@ -33,6 +33,7 @@
         var impounds = "";
         var interestRate = "";
         var totalLoanAmount = "";
+        var whoPaid = "";
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -91,9 +92,10 @@
           var impoundsURL = "tfa_38=" + impounds + "&";
           var interestRateURL = "tfa_43=" + interestRate + "&";
           var totalLoanAmountURL = "tfa_48=" + totalLoanAmount + "&";
+          var whoPaidURL = "tfa_=" + whoPaid + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
-          vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + totalLoanAmountURL;
+          vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL + whoPaidURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -162,9 +164,19 @@
             break;
           default:
         }
-        console.log("value of impounds: " + impounds);
         interestRate = loanData.InitialInterestRate;
         totalLoanAmount = loanData.BaseLoanAmount;
+        whoPaid = loanData.LOCompensation.WhoPaidCompensation;
+        switch(whoPaid){
+          case "Lender Paid":
+            whoPaid = "Lender";
+            break;
+          case "Broker Paid":
+            whoPaid = "Broker";
+            break;
+        }
+        console.log("value of impounds: " + impounds);
+
 
 
         console.log("Borrower First Name: " + borrowerFirstName);
