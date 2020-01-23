@@ -32,10 +32,6 @@
 	var loanProgramName = "";
 	var highBalance = "";
         var loanGuid = "";
-        var loFullName = "";
-        var loPhoneNum = "";
-        var loEmail = "";
-        var loNMLS = "";
         var processorName = "";
         var processorPhoneNum = "";
         var processorEmail = "";
@@ -93,73 +89,27 @@
           var borrowerFirstNameURL = "tfa_2=" + borrowerFirstName + "&";
           var brokerNameURL = "tfa_3=" + brokerName + "&";
           var accountManagerURL = "tfa_5=" + accountManager + "&";
-    
-          //window.location.href('https://www.tfaforms.com/4772695?tfa_2=' + loFullName);
+          
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
-          //document.location.href = "https://www.tfaforms.com/4772695?/tfa_2=" + loFullName;
-          //window.open('https://www.tfaforms.com/4772695?tfa_2=' + loFullName,'_blank');
-          //window.open('https://www.actappraisal.com/#act-login', '_blank');
         }
 
     function GetLoanData() {
       // Get loan summary and console log only.
-      // tpoAppObject.getLoanSummary().then(function (loanSummary) {
-      //   console.log('Loan Summary ===', loanSummary);
-      // })
-      //   .catch(function (err) {
-      //     console.log('Fetch Error :-S', err);
-      //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
         brokerName = loanData.TPO.CompanyLegalName;
           
           loanGuid = loanData.EncompassId;
-	  //loanNumber = loanData.LoanNumber;
-	  //loanProgramName = loanData.LoanProgramName;
-	      //whoPaid = loanData.LOCompensation.WhoPaidCompensation;
-	      //compAmountPaid = loanData.TotalPaidToBrokerAmount;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'LOAN_PROCESSOR'){
               accountManager = item.Name;
             }
           });
 
-          //transactionType = loanData.Property.LoanPurposeType;
-          //programType = loanData.MortgageType;
-          //compensation = loanData.RateLock.BorrLenderPaid;
-          //refinanceType = loanData.LoanPurposeOfRefinanceType;
+          console.log("Borrower First Name: " + borrowerFirstName);
 
-          if(transactionType === 'NoCash-Out Refinance') { transactionType = 'Rate/Term Refinance'; }
-          if(transactionType === 'Cash-Out Refinance') { transactionType = 'Cash-Out Refinance'; }
-
-          if(programType === 'Conventional') {programType = 'Conforming';}
-          if(programType === 'FarmersHomeAdministration') { programType = 'USDA'; }
-
-          if(transactionType === 'Purchase') { refinanceType = 'N/A'; }
-          else {
-            if(refinanceType === 'InterestRateReductionRefinanceLoan') { refinanceType = 'IRRRL'; }
-            if(refinanceType === 'FullDocumentation') { refinanceType = 'Full Documentation'; }
-            if(refinanceType === 'StreamlineWithoutAppraisal') { refinanceType = 'Streamline'; }
-            if(refinanceType === '') { refinanceType = "N/A"; }
-          }
-
-          console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
-          " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " + processorPhoneNum +
-          " BorrowerName: " + borrowerFirstName + " TransactionType: " + transactionType +
-          " ProgramType: " + programType + " RefinanceType: " + refinanceType +
-          " Fixed loan Term: " + fixedLoanTerm + 
-          " Compensation: " + compensation + " High Balance: " + highBalance + " user full name: " + user_FullName);
-
-
-          // if(loanData.Property.LoanPurposeType === "Cash-Out Refinance") { transactionType = "tfa_295"}
-          // if(loanData.Property.LoanPurposeType === "Purchase") { transactionType = "tfa_294"}
-          // if(loanData.Property.LoanPurposeType === "No Cash-Out Refinance") { transactionType = "tfa_296"}
-
-          // loanData.Applications.forEach((item, index) => {
-          //   borrowerFirstName = item.Borrower.FullName;
-          // });
             myFunction();
       })
         .catch(function (err) {
