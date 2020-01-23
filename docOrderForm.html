@@ -45,7 +45,6 @@
         var otherProgramType = "";
         var fixedLoanTerm = "";
         var armType = "";
-        var propertyType = "";
         var compensation = "";
         var contactsList = [];
         var loanObj = {};
@@ -129,7 +128,6 @@
 
           //transactionType = loanData.Property.LoanPurposeType;
           //programType = loanData.MortgageType;
-          //propertyType = loanData.Uldd.AttachmentType;
           //occupancy = loanData.Property.PropertyUsageType;
           //compensation = loanData.RateLock.BorrLenderPaid;
           //refinanceType = loanData.LoanPurposeOfRefinanceType;
@@ -147,14 +145,10 @@
             if(refinanceType === 'StreamlineWithoutAppraisal') { refinanceType = 'Streamline'; }
             if(refinanceType === '') { refinanceType = "N/A"; }
           }
-          if(propertyType === 'Detached'){ propertyType = 'SFR';}
-          if(propertyType === 'Condominium') { propertyType = 'Condo'; }
 
-
-          //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
           " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " + processorPhoneNum +
-          " BorrowerName: " + borrowerFirstName + " CoborrowerFirstName: " + CoBorrowerFirstName + " TransactionType: " + transactionType +
+          " BorrowerName: " + borrowerFirstName + " TransactionType: " + transactionType +
           " ProgramType: " + programType + " RefinanceType: " + refinanceType + " PropertyType: " + propertyType +
           " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + 
           " Compensation: " + compensation + " High Balance: " + highBalance + " user full name: " + user_FullName);
