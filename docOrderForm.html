@@ -31,6 +31,7 @@
         var transactionType = "";
         var impounds = "";
         var interestRate = "";
+        var totalLoanAmount = "";
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -88,9 +89,10 @@
           var transactionTypeURL = "tfa_32=" + transactionType + "&";
           var impoundsURL = "tfa_38=" + impounds + "&";
           var interestRateURL = "tfa_43=" + interestRate + "&";
+          var totalLoanAmountURL = "tfa_48=" + totalLoanAmount + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
-          vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL;
+          vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + totalLoanAmountURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -160,6 +162,7 @@
           default:
         }
         interestRate = loanData.initialInterestRate;
+        totalLoanAmount = loanData.BaseLoanAmount;
 
 
         console.log("Borrower First Name: " + borrowerFirstName);
