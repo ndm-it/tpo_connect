@@ -43,9 +43,7 @@
         var transactionType = "";
         var programType = "";
         var otherProgramType = "";
-        var occupancy = "";
         var fixedLoanTerm = "";
-        var amortizationType = "";
         var armType = "";
         var propertyType = "";
         var compensation = "";
@@ -119,48 +117,22 @@
         brokerName = loanData.TPO.CompanyLegalName;
           
           loanGuid = loanData.EncompassId;
-	  loanNumber = loanData.LoanNumber;
-	  loanProgramName = loanData.LoanProgramName;
-	      loNMLS = loanData.NmlsLoanOriginatorId;
-	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
-	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
-	  if(loanProgramName) {
-	     if(loanProgramName.includes('HB')) {
-	        highBalance = 'Yes';
-	      }
-	     else {
-		highBalance = 'No';
-	     }
-	  }
-	      else { highBalance = 'No'; }
-
+	  //loanNumber = loanData.LoanNumber;
+	  //loanProgramName = loanData.LoanProgramName;
+	      //whoPaid = loanData.LOCompensation.WhoPaidCompensation;
+	      //compAmountPaid = loanData.TotalPaidToBrokerAmount;
           contactsList.forEach((item, index) => {
             if(item.ContactType === 'LOAN_PROCESSOR'){
               accountManager = item.Name;
             }
           });
 
-          transactionType = loanData.Property.LoanPurposeType;
-          programType = loanData.MortgageType;
-          propertyType = loanData.Uldd.AttachmentType;
-          occupancy = loanData.Property.PropertyUsageType;
-          amortizationType = loanData.LoanAmortizationType;
-          compensation = loanData.RateLock.BorrLenderPaid;
-          refinanceType = loanData.LoanPurposeOfRefinanceType;
-
-
-          if(loFullName == null) {
-            loFullName = '';
-            loEmail = '';
-            loPhoneNum = '';
-          }
-
-          if(processorName == null){
-            processorName = '';
-            processorEmail = '';
-            processorPhoneNum = '';
-          }
-
+          //transactionType = loanData.Property.LoanPurposeType;
+          //programType = loanData.MortgageType;
+          //propertyType = loanData.Uldd.AttachmentType;
+          //occupancy = loanData.Property.PropertyUsageType;
+          //compensation = loanData.RateLock.BorrLenderPaid;
+          //refinanceType = loanData.LoanPurposeOfRefinanceType;
 
           if(transactionType === 'NoCash-Out Refinance') { transactionType = 'Rate/Term Refinance'; }
           if(transactionType === 'Cash-Out Refinance') { transactionType = 'Cash-Out Refinance'; }
@@ -175,33 +147,16 @@
             if(refinanceType === 'StreamlineWithoutAppraisal') { refinanceType = 'Streamline'; }
             if(refinanceType === '') { refinanceType = "N/A"; }
           }
-
-          //programType = ( programType==='Conventional' ? 'Conforming' : programType);
-
           if(propertyType === 'Detached'){ propertyType = 'SFR';}
           if(propertyType === 'Condominium') { propertyType = 'Condo'; }
 
-          if(occupancy === 'PrimaryResidence') { occupancy = 'Owner-Occupied';}
-          if(occupancy === 'SecondHome') { occupancy = 'Second Home';}
-          if(occupancy === 'Investor') { occupancy = 'Investment (NOO)';}
-
-          if(amortizationType === 'Fixed') {
-            amortizationType = 'Fixed Rate';
-            fixedLoanTerm = loanData.LoanAmortizationTermMonths;
-            fixedLoanTerm = fixedLoanTerm / 12;
-            fixedLoanTerm = fixedLoanTerm + " YR";
-          }
-          else if(amortizationType === 'AdjustableRate') {
-            amortizationType = 'ARM';
-            //armType = loanData.;
-          }
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
           " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " + processorPhoneNum +
           " BorrowerName: " + borrowerFirstName + " CoborrowerFirstName: " + CoBorrowerFirstName + " TransactionType: " + transactionType +
           " ProgramType: " + programType + " RefinanceType: " + refinanceType + " PropertyType: " + propertyType +
-          " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + " AmortizationType: " + amortizationType +
+          " Occupancy: " + occupancy + " Fixed loan Term: " + fixedLoanTerm + 
           " Compensation: " + compensation + " High Balance: " + highBalance + " user full name: " + user_FullName);
 
 
