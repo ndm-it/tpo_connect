@@ -6,6 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         var tpoAppObject = null;
+        var loanGuid = "";
+        var contactsList = [];
         var borrowerFirstName = "";
         var borrowerLastName = "";
         var brokerName = "";
@@ -17,33 +19,10 @@
         var escrowPhone = "";
         var escrowContact = "";
         var escrowEmail = "";
-
-
-
-
-
-        var appraisalCompany = "";
-	    var user_FullName = "";
-	    var user_Email = "";
-	var whoPaid = "";
-	var compAmountPaid = "";
-	var refinanceType = "";
-	var loanNumber = "";
-	var loanProgramName = "";
-	var highBalance = "";
-        var loanGuid = "";
-        var processorName = "";
-        var processorPhoneNum = "";
-        var processorEmail = "";
-        var processorNMLS = "";
-        var transactionType = "";
-        var programType = "";
-        var otherProgramType = "";
-        var fixedLoanTerm = "";
-        var armType = "";
-        var compensation = "";
-        var contactsList = [];
-        var loanObj = {};
+        //Need to pull value from 1870 for POA, but didn't do it yet.
+        var poa = "";
+        var vestingText = "";
+        
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -96,9 +75,11 @@
           var escrowPhoneURL = "tfa_12=" + escrowPhone + "&";
           var escrowContactURL = "tfa_14=" + escrowContact + "&";
           var escrowEmailURL = "tfa_15=" + escrowEmail + "&";
+          var vestingTextURL = "tfa_27=" + vestingText + "&";
 
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL + 
-          titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL;
+          titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
+          vestingTextURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -106,6 +87,7 @@
       // Get loan summary and console log only.
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
+        loanGuid = loanData.EncompassId;
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
         //NEED TO ADD IN CHECK FOR CX.BROKERDOINGBUSSAS
         brokerName = loanData.TPO.CompanyLegalName;
@@ -134,9 +116,9 @@
         if(loanData.ClosingCost.EscrowCompanyName){
           escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
         }
-          loanGuid = loanData.EncompassId;
+        vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
 
-          console.log("Borrower First Name: " + borrowerFirstName);
+        console.log("Borrower First Name: " + borrowerFirstName);
 
             myFunction();
       })
