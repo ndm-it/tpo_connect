@@ -89,8 +89,11 @@
           var borrowerFirstNameURL = "tfa_2=" + borrowerFirstName + "&";
           var brokerNameURL = "tfa_3=" + brokerName + "&";
           var accountManagerURL = "tfa_5=" + accountManager + "&";
+          var TitleCoURL = "tfa_6=" + TitleCo + "&";
+          var TitlePhoneNumURL = "tfa_8=" + TitlePhoneNum + "&";
+          var TitleContactURL = "tfa_9=" + TitleContact + "&";
           
-          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL;
+          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + TitleCoURL + TitlePhoneNumURL + TitleContactURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
 
@@ -99,14 +102,18 @@
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
+        //NEED TO ADD IN CHECK FOR CX.BROKERDOINGBUSSAS
         brokerName = loanData.TPO.CompanyLegalName;
-          
+        if(item.ContactType === 'LOAN_PROCESSOR'){
+          accountManager = item.Name;
+        }
+        if(item.ContactType === 'TITLE_COMPANY'){
+          TitlePhoneNum = item.phone;
+          TitleContact = item.contactName;
+        }
+        TitleCo = loanData.ClosingCost.TitleCompanyName;
+        TitlePhoneNum = loanData.
           loanGuid = loanData.EncompassId;
-          contactsList.forEach((item, index) => {
-            if(item.ContactType === 'LOAN_PROCESSOR'){
-              accountManager = item.Name;
-            }
-          });
 
           console.log("Borrower First Name: " + borrowerFirstName);
 
