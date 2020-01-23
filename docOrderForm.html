@@ -21,7 +21,7 @@
 
 
 
-        
+
         var appraisalCompany = "";
 	    var user_FullName = "";
 	    var user_Email = "";
@@ -92,7 +92,7 @@
           var TitleCoURL = "tfa_6=" + TitleCo + "&";
           var TitlePhoneNumURL = "tfa_8=" + TitlePhoneNum + "&";
           var TitleContactURL = "tfa_9=" + TitleContact + "&";
-          
+
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + TitleCoURL + TitlePhoneNumURL + TitleContactURL;
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
@@ -112,7 +112,6 @@
           TitleContact = item.contactName;
         }
         TitleCo = loanData.ClosingCost.TitleCompanyName;
-        TitlePhoneNum = loanData.
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
