@@ -34,6 +34,7 @@
         var interestRate = "";
         var totalLoanAmount = "";
         var whoPaid = "";
+        var fundingFeeList = "";
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
       elli.script.guest.create();
@@ -175,8 +176,23 @@
             whoPaid = "Broker";
             break;
         }
-        console.log("value of impounds: " + impounds);
-
+        fundingFeeList = loanData.FundingFeeList;
+        if(fundingFeeList.includes("813."))
+        {
+          var begIndex = fundingFeeList.indexOf("813.");
+          var lastIndex = fundingFeeList.length-1;
+          var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
+          var endIndex = 0;
+          if(shortenedList.indexOf("\n") == -1){
+            console.log("No return character");
+          }
+          else {
+            endIndex = shortenedList.indexOf("\n");
+            var lastSubstring = shortenedList.substring(0,endIndex);
+            loanOriginationFees = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+            console.log(loanOriginationFees);
+          }
+        }
 
 
         console.log("Borrower First Name: " + borrowerFirstName);
