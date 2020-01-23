@@ -148,6 +148,15 @@
           default:
         }
         impounds = loanData.UnderwritingEscrowIndicator;
+        switch(impounds) {
+          case "true":
+            impounds = "Yes";
+            break;
+          case "false":
+            impounds = "No";
+            break;
+          default:
+        }
 
 
         console.log("Borrower First Name: " + borrowerFirstName);
