@@ -125,7 +125,9 @@
         if(loanData.ClosingCost.EscrowCompanyName){
           escrowCo = loanData.ClosingCost.EscrowCompanyName.replace(/&/g, "AND");
         }
-        vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
+        if(loanData.ClosingDocument.FinalVestingDescription){
+          vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
+        }
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
         //estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
@@ -143,6 +145,7 @@
           case "Purchase":
             transactionType = "Purchase";
             break;
+          default:
         }
         impounds = loanData.underwritingEscrowIndicator;
 
