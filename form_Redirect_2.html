@@ -6,6 +6,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         var tpoAppObject = null;
+        var borrowerFirstName = "";
+        var borrowerLastName = "";
+        var brokerName = "";
+        var accountManager = "";
+        var TitleCo = "";
+        var TitlePhoneNum = "";
+        var TitleContact = "";
+        var escrowCo = "";
+        var escrowPhone = "";
+        var escrowContact = "";
+        var escrowEmail = "";
+
+
+
+
+        
         var appraisalCompany = "";
 	    var user_FullName = "";
 	    var user_Email = "";
@@ -24,11 +40,6 @@
         var processorPhoneNum = "";
         var processorEmail = "";
         var processorNMLS = "";
-	var borrowerType = "";
-        var borrowerFirstName = "";
-	var borrowerLastName = "";
-        var CoBorrowerFirstName = "";
-	var CoBorrowerLastName = "";
         var transactionType = "";
         var programType = "";
         var otherProgramType = "";
@@ -82,36 +93,13 @@
         }
 
         function myFunction() {
-          var loFullNameURL = "?tfa_2=" + loFullName + "&";
-          var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
-		var userFullNameURL = "tfa_412=" + user_FullName + "&";
-var userEmailURL = "tfa_413=" + user_Email + "&";
-          var whoPaidURL = "tfa_249=" + whoPaid + "&";
-	  var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
-          var loanNumberURL = "tfa_339=" + loanNumber + "&";
-          var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
-	var highBalanceURL = "tfa_324=" + highBalance + "&";
-          var loEmailURL = "tfa_8=" + loEmail + "&";
-	  var loNMLSURL = "tfa_10=" + loNMLS + "&";
-          var processorNameURL = "tfa_303=" + processorName + "&";
-          var processorEmailURL = "tfa_305=" + processorEmail + "&";
-          var processorPhoneNumURL = "tfa_304=" + processorPhoneNum + "&";
-	  var borrowerTypeURL = "tfa_417=" + borrowerType + "&";
-          var borrowerFirstNameURL = "tfa_18=" + borrowerFirstName + "&";
-	  var borrowerLastNameURL = "tfa_20=" + borrowerLastName + "&";
-	  var CoBorrowerFirstNameURL = "tfa_414=" + CoBorrowerFirstName + "&";
-	  var CoBorrowerLastNameURL = "tfa_416=" + CoBorrowerLastName + "&";
-          var programTypeURL = "tfa_283=" + programType + "&";
-          var propertyTypeURL = "tfa_243=" + propertyType + "&";
-          var occupancyURL = "tfa_269=" + occupancy + "&";
-          var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
-          var amortizationTypeURL = "tfa_310=" + amortizationType + "&";
-          var compensationURL = "tfa_249=" + compensation + "&";
-          var loanGuidURL = "tfa_328=" + loanGuid + "&";
-          var transactionTypeURL = "tfa_293=" + transactionType;
+          var borrowerFirstNameURL = "tfa_2=" + borrowerFirstName + "&";
+          var brokerNameURL = "tfa_3=" + brokerName + "&";
+          var accountManagerURL = "tfa_5=" + accountManager + "&";
+    
           //window.location.href('https://www.tfaforms.com/4772695?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + userFullNameURL + userEmailURL + whoPaidURL + compAmountPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
-          document.location.href = "https://www.tfaforms.com/4772695" + fieldValueString;
+          var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL;
+          document.location.href = "https://www.tfaforms.com/4799706" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4772695?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4772695?tfa_2=' + loFullName,'_blank');
           //window.open('https://www.actappraisal.com/#act-login', '_blank');
@@ -127,9 +115,10 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
       //   });
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
-          //console.log('Loan Data ===', loanData);
-          //Getting Appraisal Company Name
-          contactsList = loanData.Contacts;
+        borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName;
+        borrowerFirstName = borrowerFirstName + ' ' + loanData.Applications[0].Borrower.LastName;
+        brokerName = loanData.TPO.CompanyLegalName;
+          
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
@@ -142,41 +131,23 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      }
 	     else {
 		highBalance = 'No';
-	     } 
+	     }
 	  }
 	      else { highBalance = 'No'; }
-	      
+
           contactsList.forEach((item, index) => {
-            if(item.ContactType === 'APPRAISAL_COMPANY')
-            {
-            //console.log(item.Name);
-            appraisalCompany = item.Name;
-            }
-            if(item.ContactType === 'LOAN_OFFICER')
-            {
-              if(item.Name != 'undefined')
-              loFullName = item.Name;
-              loPhoneNum = item.Phone;
-              loEmail = item.Email;
-            }
             if(item.ContactType === 'LOAN_PROCESSOR'){
-              processorName = item.Name;
-              processorPhoneNum = item.Phone;
-              processorEmail = item.Email;
+              accountManager = item.Name;
             }
           });
 
           //Setting loan officer name
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
-	      if(loanData.Applications[0].Coborrower.BorrowerType == 'Individual')
-		 {
-			 borrowerType = 'Individual';
-		 }
-	      else {
+
 		      CoBorrowerFirstName = loanData.Applications[0].Coborrower.FirstName;
 	  CoBorrowerLastName = loanData.Applications[0].Coborrower.LastName;
-	      }
+	      
           transactionType = loanData.Property.LoanPurposeType;
           programType = loanData.MortgageType;
           propertyType = loanData.Uldd.AttachmentType;
