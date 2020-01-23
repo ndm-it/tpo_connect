@@ -104,7 +104,7 @@
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
         //NEED TO ADD IN CHECK FOR CX.BROKERDOINGBUSSAS
         brokerName = loanData.TPO.CompanyLegalName;
-        
+
         contactsList = loanData.Contacts;
         contactsList.forEach((item,index)=> {
           if(item.ContactType === 'LOAN_PROCESSOR'){
@@ -115,8 +115,8 @@
             titleContact = item.contactName;
           }
         });
-        titleCo = loanData.ClosingCost.TitleCompanyName;
-        titleCo.replace(/&/g, "AND");
+        titleCo = loanData.ClosingCost.TitleCompanyName.replace(/&/g, "AND");
+        //titleCo = titleCo.replace(/&/g, "AND");
           loanGuid = loanData.EncompassId;
 
           console.log("Borrower First Name: " + borrowerFirstName);
