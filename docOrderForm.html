@@ -29,6 +29,7 @@
         var loanProgram = "";
         //Need to figure out exact wording for choices
         var transactionType = "";
+        var impoundsCheck = "";
         var impounds = "";
         var interestRate = "";
         var totalLoanAmount = "";
@@ -151,8 +152,8 @@
             break;
           default:
         }
-        impounds = loanData.UnderwritingEscrowIndicator;
-        switch(impounds) {
+        impoundsCheck = loanData.UnderwritingEscrowIndicator;
+        switch(impoundsCheck) {
           case true:
             impounds = "Yes";
             break;
