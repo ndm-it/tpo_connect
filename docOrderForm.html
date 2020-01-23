@@ -153,15 +153,15 @@
         }
         impounds = loanData.UnderwritingEscrowIndicator;
         switch(impounds) {
-          case "true":
+          case true:
             impounds = "Yes";
             break;
-          case "false":
+          case false:
             impounds = "No";
             break;
           default:
         }
-        console.log(impounds);
+        console.log("value of impounds: " + impounds);
         interestRate = loanData.InitialInterestRate;
         totalLoanAmount = loanData.BaseLoanAmount;
 
