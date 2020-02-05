@@ -39,6 +39,10 @@
         var contractProcessorFee = "";
         var contractProcessorName = "";
         var brokerFeesBorrowerPaidComp = "";
+        var originationFee = "";
+        var feesArray = [];
+        var brokerOtherLoanFeePercentage = "";
+        var brokerOtherLoanFeeAmount = "";
 
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -102,10 +106,14 @@
           var contractProcessorFeeURL = "tfa_53=" + contractProcessorFee + "&";
           var contractProcessorNameURL = "tfa_54=" + contractProcessorName + "&";
           var brokerFeesBorrowerPaidCompURL = "tfa_55=" + brokerFeesBorrowerPaidComp + "&";
+          var originationFeeURL = "tfa_56=" + originationFee + "&";
+          var brokerOtherLoanFeePercentageURL = "tfa_57=" + brokerOtherLoanFeePercentage + "&";
+          var brokerOtherLoanFeeAmountURL = "tfa_58=" + brokerOtherLoanFeeAmount + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
-          whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL + brokerFeesBorrowerPaidCompURL;
+          whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL + brokerFeesBorrowerPaidCompURL + originationFeeURL + 
+          brokerOtherLoanFeePercentageURL + brokerOtherLoanFeeAmountURL;
           console.log(fieldValueString);
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
@@ -215,6 +223,13 @@
             }
           });
         }
+        feesArray = loanData.Fees;
+        feesArray.forEach((item,index) => {
+          if(item.FeeType === 'MortgageBrokerFee'){
+            brokerOtherLoanFeePercentage = item.Percentage;
+            brokerOtherLoanFeeAmount = item.PaidToBroker;
+          }
+        });
 
 
 
