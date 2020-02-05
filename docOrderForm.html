@@ -34,10 +34,11 @@
         var interestRate = "";
         var totalLoanAmount = "";
         var whoPaid = "";
-        var fundingFeeList = "";
+        //var fundingFeeList = "";
         var fundingFeesArray = [];
         var contractProcessorFee = "";
         var contractProcessorName = "";
+        var brokerFeesBorrowerPaidComp = "";
 
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -95,11 +96,12 @@
           var loanProgramURL = "tfa_31=" + loanProgram + "&";
           var transactionTypeURL = "tfa_32=" + transactionType + "&";
           var impoundsURL = "tfa_38=" + impounds + "&";
-          var interestRateURL = "tfa_47=" + interestRate + "&";
+          var interestRateURL = "tfa_43=" + interestRate + "&";
           var totalLoanAmountURL = "tfa_48=" + totalLoanAmount + "&";
           var whoPaidURL = "tfa_50=" + whoPaid + "&";
           var contractProcessorFeeURL = "tfa_53=" + contractProcessorFee + "&";
           var contractProcessorNameURL = "tfa_54=" + contractProcessorName + "&";
+          var brokerFeesBorrowerPaidCompURL = "tfa_59=" + brokerFeesBorrowerPaidComp + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
@@ -184,33 +186,36 @@
             whoPaid = "Broker";
             break;
         }
-        fundingFeeList = loanData.FundingFeeList;
-        if(fundingFeeList.includes("813."))
-        {
-          var begIndex = fundingFeeList.indexOf("813.");
-          var lastIndex = fundingFeeList.length-1;
-          var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
-          var endIndex = 0;
-          if(shortenedList.indexOf("\n") == -1){
-            console.log("No return character");
-          }
-          else {
-            endIndex = shortenedList.indexOf("\n");
-            var lastSubstring = shortenedList.substring(0,endIndex);
-            contractProcessorFee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
-            console.log(contractProcessorFee);
-          }
-          fundingFeesArray = loanData.FundingFees;
+        fundingFeesArray = loanData.FundingFees;
+        // fundingFeeList = loanData.FundingFeeList;
+        // if(fundingFeeList.includes("813."))
+        // {
+        //   var begIndex = fundingFeeList.indexOf("813.");
+        //   var lastIndex = fundingFeeList.length-1;
+        //   var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
+        //   var endIndex = 0;
+        //   if(shortenedList.indexOf("\n") == -1){
+        //     console.log("No return character");
+        //   }
+        //   else {
+        //     endIndex = shortenedList.indexOf("\n");
+        //     var lastSubstring = shortenedList.substring(0,endIndex);
+        //     contractProcessorFee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+        //     console.log(contractProcessorFee);
+        //   }
+
           fundingFeesArray.forEach((item,index)=> {
             if(item.LineId === '813.'){
+              contractProcessorFee = item.Amount;
               contractProcessorName = item.Payee;
               console.log("value of contract processor Name: " + contractProcessorName);
             }
+            if(item.LineId === '801a.'){
+              brokerFeesBorrowerPaidComp = item.Amount;
+              console.log("value of Loan Origination Fee: " + brokerFeesBorrowerPaidComp);
+            }
           });
         }
-
-
-
         console.log("Borrower First Name: " + borrowerFirstName);
 
             myFunction();
