@@ -110,7 +110,7 @@
           var originationFeeURL = "tfa_56=" + originationFee + "&";
           var brokerOtherLoanFeePercentageURL = "tfa_57=" + brokerOtherLoanFeePercentage + "&";
           var brokerOtherLoanFeeAmountURL = "tfa_58=" + brokerOtherLoanFeeAmount + "&";
-          var totalBrokerFeesURL = "tfa_59=" + totalBrokerFees = "&";
+          var totalBrokerFeesURL = "tfa_59=" + totalBrokerFees + "&";
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
@@ -233,8 +233,9 @@
             brokerOtherLoanFeeAmount = item.PaidToBroker;
           }
         });
+
         totalBrokerFees = loanData.Hmda.OriginationCharges;
-        
+
 
 
 
