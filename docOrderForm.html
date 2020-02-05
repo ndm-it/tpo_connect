@@ -34,7 +34,7 @@
         var interestRate = "";
         var totalLoanAmount = "";
         var whoPaid = "";
-        //var fundingFeeList = "";
+        var fundingFeeList = "";
         var fundingFeesArray = [];
         var contractProcessorFee = "";
         var contractProcessorName = "";
@@ -187,26 +187,25 @@
             break;
         }
         fundingFeesArray = loanData.FundingFees;
-        // fundingFeeList = loanData.FundingFeeList;
-        // if(fundingFeeList.includes("813."))
-        // {
-        //   var begIndex = fundingFeeList.indexOf("813.");
-        //   var lastIndex = fundingFeeList.length-1;
-        //   var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
-        //   var endIndex = 0;
-        //   if(shortenedList.indexOf("\n") == -1){
-        //     console.log("No return character");
-        //   }
-        //   else {
-        //     endIndex = shortenedList.indexOf("\n");
-        //     var lastSubstring = shortenedList.substring(0,endIndex);
-        //     contractProcessorFee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
-        //     console.log(contractProcessorFee);
-        //   }
-
+        fundingFeeList = loanData.FundingFeeList;
+        if(fundingFeeList.includes("813."))
+        {
+          var begIndex = fundingFeeList.indexOf("813.");
+          var lastIndex = fundingFeeList.length-1;
+          var shortenedList = fundingFeeList.substring(begIndex,lastIndex);
+          var endIndex = 0;
+          if(shortenedList.indexOf("\n") == -1){
+            console.log("No return character");
+          }
+          else {
+            endIndex = shortenedList.indexOf("\n");
+            var lastSubstring = shortenedList.substring(0,endIndex);
+            contractProcessorFee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
+            console.log(contractProcessorFee);
+          }
+          
           fundingFeesArray.forEach((item,index)=> {
             if(item.LineId === '813.'){
-              contractProcessorFee = item.Amount;
               contractProcessorName = item.Payee;
               console.log("value of contract processor Name: " + contractProcessorName);
             }
@@ -215,7 +214,13 @@
               console.log("value of Loan Origination Fee: " + brokerFeesBorrowerPaidComp);
             }
           });
+        }
+
+
         
+
+
+
         console.log("Borrower First Name: " + borrowerFirstName);
 
             myFunction();
