@@ -105,7 +105,7 @@
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
-          whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL;
+          whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL + brokerFeesBorrowerPaidCompURL;
           console.log(fieldValueString);
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
@@ -203,7 +203,7 @@
             contractProcessorFee = lastSubstring.substring(lastSubstring.lastIndexOf("$")+1,endIndex);
             console.log(contractProcessorFee);
           }
-          
+
           fundingFeesArray.forEach((item,index)=> {
             if(item.LineId === '813.'){
               contractProcessorName = item.Payee;
@@ -217,7 +217,7 @@
         }
 
 
-        
+
 
 
 
