@@ -202,8 +202,8 @@
           }
           fundingFeesArray = loanData.FundingFees;
           fundingFeesArray.forEach((item,index)=> {
-            if(item.lineId === '813.'){
-              contractProcessorName = item.payee;
+            if(item.LineId === '813.'){
+              contractProcessorName = item.Payee;
               console.log("value of contract processor Name: " + contractProcessorName);
             }
           });
