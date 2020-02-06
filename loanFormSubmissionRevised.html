@@ -162,6 +162,9 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
 	      loNMLS = loanData.NmlsLoanOriginatorId;
+	      if(!loNMLS){
+		      loNMLS = "";
+	      }
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
 	      leIssuedBy = loanData.TPO.LEIssuedBy;
 	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
