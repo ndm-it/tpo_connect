@@ -367,7 +367,20 @@ else
           }
           else if(amortizationType === 'AdjustableRate') {
             amortizationType = 'ARM';
-            //armType = loanData.;
+            armType = loanData.Hmda.IntroRatePeriod;
+            switch(armType) {
+          case "60":
+            armType = "5/1 ARM";
+            break;
+          case "84":
+            armType = "7/1 ARM";
+            break;
+          case "120":
+            armType = "10/1 ARM";
+            break;
+          default:
+        }
+            
           }
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
