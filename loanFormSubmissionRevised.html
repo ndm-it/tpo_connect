@@ -20,6 +20,7 @@
 	var loanProgramName = "";
 	var programNameExists = "";
 	var highBalance = "";
+  var incomeVerifType = "";
         var loanGuid = "";
         var loFullName = "";
         var loPhoneNum = "";
@@ -54,6 +55,7 @@
         var propertyType = "";
         var compensation = "";
         var contactsList = [];
+        var customFields = [];
         var loanObj = {};
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -139,10 +141,12 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
 	  var loanProgramNameURL = "tfa_816=" + loanProgramName + "&";
 	  var programNameExistsURL = "tfa_817=" + programNameExists + "&";
+    var incomeVerifTypeURL = "tfa_=" + incomeVerifType + "&";
+
           var transactionTypeURL = "tfa_293=" + transactionType;
 	  
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4799231?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4799231?tfa_2=' + loFullName,'_blank');
@@ -165,6 +169,13 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
+    customFields = loanData.CustomFields;
+    customFields.forEach((item, index) => {
+      if(item.FieldName === 'CX.INCOMEVERIFYTYPE')
+      {
+        incomeVerifType = item.StringValue;
+      }
+    });
 	      if(loanProgramName) {
 		      programNameExists = "Yes";
 	      }
