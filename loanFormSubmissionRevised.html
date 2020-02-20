@@ -268,7 +268,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           transactionType = loanData.Property.LoanPurposeType;
 
           programType = loanData.MortgageType;
-          if(loanProgramName.Contains('Prime Direct') || loanProgramName.Contains('Credit Direct') ||loanProgramName.Contains('Income Direct') || loanProgramName.Contains('Asset Direct') || loanProgramName.Contains('DCR Direct'))
+          if(loanProgramName.includes('Prime Direct') || loanProgramName.includes('Credit Direct') ||loanProgramName.includes('Income Direct') || loanProgramName.includes('Asset Direct') || loanProgramName.includes('DCR Direct'))
           {
             programType = 'Non-QM';
           }
