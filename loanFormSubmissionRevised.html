@@ -144,7 +144,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
     var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
 
           var transactionTypeURL = "tfa_293=" + transactionType;
-	  
+
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
           var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
@@ -201,6 +201,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 		      productType = 'Prime Direct';
 	      }
 	      else if(loanProgramName.includes('Credit Direct')){
+          
 		      productType = 'Credit Direct';
 	      }
 	      else if(loanProgramName.includes('Income Direct')){
@@ -214,7 +215,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      }
 	  }
 	      else { highBalance = 'No'; }
-	      
+
 	      discloseDate = loanData.RegulationZ.initialDisclosureProvidedDate;
 	      if(discloseDate) {
 		  discloseDateCheckbox = 'Yes';
@@ -265,7 +266,12 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 		      CoBorrowerEmail = loanData.Applications[0].Coborrower.EmailAddressText;
 	      }
           transactionType = loanData.Property.LoanPurposeType;
+
           programType = loanData.MortgageType;
+          if(loanProgramName.Contains('Prime Direct') || loanProgramName.Contains('Credit Direct') ||loanProgramName.Contains('Income Direct') || loanProgramName.Contains('Asset Direct') || loanProgramName.Contains('DCR Direct') || )
+          {
+            programType = 'Non-QM';
+          }
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
           amortizationType = loanData.LoanAmortizationType;
@@ -408,7 +414,7 @@ else
             break;
           default:
         }
-            
+
           }
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
