@@ -268,10 +268,13 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           transactionType = loanData.Property.LoanPurposeType;
 
           programType = loanData.MortgageType;
-          if(loanProgramName.includes('Prime Direct') || loanProgramName.includes('Credit Direct') ||loanProgramName.includes('Income Direct') || loanProgramName.includes('Asset Direct') || loanProgramName.includes('DCR Direct'))
-          {
-            programType = 'Non-QM';
+          if(loanProgramName){
+            if(loanProgramName.includes('Prime Direct') || loanProgramName.includes('Credit Direct') ||loanProgramName.includes('Income Direct') || loanProgramName.includes('Asset Direct') || loanProgramName.includes('DCR Direct'))
+              {
+              programType = 'Non-QM';
+              }
           }
+          
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
           amortizationType = loanData.LoanAmortizationType;
@@ -416,6 +419,7 @@ else
         }
 
           }
+
 
           //propertyType = ( propertyType==='Detached' ? 'SFR' : (propertyType ==='Condominium'? 'Condo' : propertyType) );
           console.log("LO Full Name: " + loFullName + " LO Phone Num: " + loPhoneNum + " LO Email: " + loEmail +
