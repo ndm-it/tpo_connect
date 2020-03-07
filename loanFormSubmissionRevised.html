@@ -182,7 +182,8 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      if(loanProgramName) {
 		      programNameExists = "Yes";
 	      }
-	      else { programNameExists = "No"; }
+	      else { programNameExists = "No"; 
+		   loanProgramName = "";}
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      if(!loNMLS){
 		      loNMLS = "";
@@ -193,6 +194,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      if(compAmountPaid == null) {
 		      compAmountPaid = '';
 	      }
+	      programType = loanData.MortgageType;
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'Yes';
@@ -200,21 +202,26 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	     else {
 		highBalance = 'No';
 	     }
-		  if(loanProgramName.includes('Prime')){
+	    if(loanProgramName.includes('Prime')){
 		      productType = 'Prime Direct';
+		    programType = 'Non-QM';
 	      }
 	      else if(loanProgramName.includes('Credit Direct')){
 
 		      productType = 'Credit Direct';
+		      programType = 'Non-QM';
 	      }
 	      else if(loanProgramName.includes('Income Direct')){
 		      productType = 'Income Direct';
+		      programType = 'Non-QM';
 	      }
 	      else if(loanProgramName.includes('Asset')){
 		      productType = 'Asset Direct';
+		      programType = 'Non-QM';
 	      }
 	      else if(loanProgramName.includes('DCR Direct')){
 		      productType = 'DCR Direct';
+		      programType = 'Non-QM';
 	      }
 	  }
 	      else { highBalance = 'No'; }
@@ -270,13 +277,7 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      }
           transactionType = loanData.Property.LoanPurposeType;
 
-          programType = loanData.MortgageType;
-          if(loanProgramName){
-            if(loanProgramName.includes('Prime Direct') || loanProgramName.includes('Credit Direct') ||loanProgramName.includes('Income Direct') || loanProgramName.includes('Asset Direct') || loanProgramName.includes('DCR Direct'))
-              {
-              programType = 'Non-QM';
-              }
-          }
+          
           
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
