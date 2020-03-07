@@ -170,12 +170,15 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
     customFields = loanData.CustomFields;
+	      if(customFields) {
+		      
     customFields.forEach((item, index) => {
       if(item.FieldName === 'CX.INCOMEVERIFYTYPE')
       {
         incomeVerifType = item.StringValue;
       }
     });
+	      }
 	      if(loanProgramName) {
 		      programNameExists = "Yes";
 	      }
