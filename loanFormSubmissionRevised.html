@@ -254,7 +254,10 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
               processorEmail = item.Email;
             }
 	    if(item.CategoryName === 'Broker\'s Loan Contact'){
-	      tpoPOCEmail = item.Email;
+	      if(item.Email){
+		 tpoPOCEmail = item.Email;
+	      }
+	      else { tpoPOCEmail = ""; }
 	    }
           });
 
