@@ -54,6 +54,7 @@
         var armType = "";
         var propertyType = "";
         var compensation = "";
+	var impounds = "";
         var contactsList = [];
         var customFields = [];
         var loanObj = {};
@@ -141,12 +142,13 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
 	  var loanProgramNameURL = "tfa_816=" + loanProgramName + "&";
 	  var programNameExistsURL = "tfa_817=" + programNameExists + "&";
+		var impoundsURL = "tfa_813=" + impounds + "&";
     var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
 
           var transactionTypeURL = "tfa_293=" + transactionType;
 
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4799231?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4799231?tfa_2=' + loFullName,'_blank');
@@ -261,6 +263,11 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	    }
           });
 
+	      impounds = loanData.RateLock.ImpoundWaived;
+	      if(!impounds){
+		      impounds = "";
+	      }
+	      
           //Setting loan officer name
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
