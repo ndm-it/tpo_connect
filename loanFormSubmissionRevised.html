@@ -54,7 +54,8 @@
         var armType = "";
         var propertyType = "";
         var compensation = "";
-	var impounds = "";
+	      var impounds = "";
+        var submissionStatus = "";
         var contactsList = [];
         var customFields = [];
         var loanObj = {};
@@ -102,53 +103,53 @@
         function myFunction() {
           var loFullNameURL = "?tfa_2=" + loFullName + "&";
           var refinanceTypeURL = "tfa_319=" + refinanceType + "&";
-		var userFullNameURL = "tfa_412=" + user_FullName + "&";
-var userEmailURL = "tfa_413=" + user_Email + "&";
-		var loanOriginationFeesURL = "tfa_252=" + loanOriginationFees + "&";
-		var processingFeesURL = "tfa_631=" + processingFees + "&";
-		var IH_FeeURL = "tfa_632=" + IH_Fee + "&";
-		var feeExistsURL = "tfa_636=" + feeExists + "&";
-		var tpoLOEmailURL = "tfa_663=" + tpoLOEmail + "&";
-		var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
-		var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
-		var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
-		var discloseDateURL = "tfa_719=" + discloseDate + "&";
-		var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
+		      var userFullNameURL = "tfa_412=" + user_FullName + "&";
+          var userEmailURL = "tfa_413=" + user_Email + "&";
+		      var loanOriginationFeesURL = "tfa_252=" + loanOriginationFees + "&";
+		      var processingFeesURL = "tfa_631=" + processingFees + "&";
+		      var IH_FeeURL = "tfa_632=" + IH_Fee + "&";
+		      var feeExistsURL = "tfa_636=" + feeExists + "&";
+		      var tpoLOEmailURL = "tfa_663=" + tpoLOEmail + "&";
+		      var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
+		      var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
+		      var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
+		      var discloseDateURL = "tfa_719=" + discloseDate + "&";
+		      var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
-	  var productTypeURL = "tfa_720=" + productType + "&";
-	  //var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
+	        var productTypeURL = "tfa_720=" + productType + "&";
+	        //var compAmountPaidURL = "tfa_252=" + compAmountPaid + "&";
           var loanNumberURL = "tfa_339=" + loanNumber + "&";
           var loPhoneNumURL = "tfa_6=" + loPhoneNum + "&";
-	var highBalanceURL = "tfa_324=" + highBalance + "&";
+	        var highBalanceURL = "tfa_324=" + highBalance + "&";
           var loEmailURL = "tfa_8=" + loEmail + "&";
-	  var loNMLSURL = "tfa_10=" + loNMLS + "&";
+	        var loNMLSURL = "tfa_10=" + loNMLS + "&";
           var processorNameURL = "tfa_303=" + processorName + "&";
           var processorEmailURL = "tfa_305=" + processorEmail + "&";
           var processorPhoneNumURL = "tfa_304=" + processorPhoneNum + "&";
-	  var borrowerTypeURL = "tfa_417=" + borrowerType + "&";
+	        var borrowerTypeURL = "tfa_417=" + borrowerType + "&";
           var borrowerFirstNameURL = "tfa_18=" + borrowerFirstName + "&";
-	  var borrowerLastNameURL = "tfa_20=" + borrowerLastName + "&";
-	  var borrowerEmailURL = "tfa_690=" + borrowerEmail + "&";
-	  var CoBorrowerFirstNameURL = "tfa_414=" + CoBorrowerFirstName + "&";
-	  var CoBorrowerLastNameURL = "tfa_416=" + CoBorrowerLastName + "&";
-	  var CoBorrowerEmailURL = "tfa_691=" + CoBorrowerEmail + "&";
+	        var borrowerLastNameURL = "tfa_20=" + borrowerLastName + "&";
+	        var borrowerEmailURL = "tfa_690=" + borrowerEmail + "&";
+	        var CoBorrowerFirstNameURL = "tfa_414=" + CoBorrowerFirstName + "&";
+	        var CoBorrowerLastNameURL = "tfa_416=" + CoBorrowerLastName + "&";
+	        var CoBorrowerEmailURL = "tfa_691=" + CoBorrowerEmail + "&";
           var programTypeURL = "tfa_283=" + programType + "&";
           var propertyTypeURL = "tfa_243=" + propertyType + "&";
           var occupancyURL = "tfa_269=" + occupancy + "&";
           var fixedLoanTermURL = "tfa_265=" + fixedLoanTerm + "&";
           var amortizationTypeURL = "tfa_310=" + amortizationType + "&";
           var armTypeURL = "tfa_261=" + armType + "&";
-	  var compensationURL = "tfa_249=" + compensation + "&";
+	        var compensationURL = "tfa_249=" + compensation + "&";
           var loanGuidURL = "tfa_328=" + loanGuid + "&";
-	  var loanProgramNameURL = "tfa_816=" + loanProgramName + "&";
-	  var programNameExistsURL = "tfa_817=" + programNameExists + "&";
-		var impoundsURL = "tfa_813=" + impounds + "&";
-    var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
-
+	        var loanProgramNameURL = "tfa_816=" + loanProgramName + "&";
+	        var programNameExistsURL = "tfa_817=" + programNameExists + "&";
+		      var impoundsURL = "tfa_813=" + impounds + "&";
+          var submissionStatusURL = "tfa_850=" + submissionStatus + "&";
+          var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
 
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + submissionStatusURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4799231?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4799231?tfa_2=' + loFullName,'_blank');
@@ -267,7 +268,18 @@ var userEmailURL = "tfa_413=" + user_Email + "&";
 	      if(!impounds){
 		      impounds = "";
 	      }
-	      
+        //Checking TPO.X90 for initial submission date. If TPO.X90 is empty, not submitted.
+        if(loanData.TPO.InitialSubmitDate){
+          if(loanData.TPO.InitialSubmitDate.length > 0){
+            submissionStatus = "Submitted";
+            }
+            else {
+            submissionStatus = "Not Submitted";
+            }
+          }
+        else{
+        submissionStatus = "Not Submitted";
+        }
           //Setting loan officer name
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
