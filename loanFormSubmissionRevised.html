@@ -253,11 +253,6 @@
               loPhoneNum = item.Phone;
               loEmail = item.Email;
             }
-            loanData.MilestoneFreeRoleLogs.forEach((item, index) => {
-              if(item.MilestoneFreeRoleLogs.LoanAssociate.RoleName == 'TPO Loan Officer'){
-                loPhoneNum = item.MilestoneFreeRoleLogs.LoanAssociate.phone;
-              }
-            });
             if(item.ContactType === 'LOAN_PROCESSOR'){
               processorName = item.Name;
               processorPhoneNum = item.Phone;
