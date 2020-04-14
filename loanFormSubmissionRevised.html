@@ -253,13 +253,6 @@
               loPhoneNum = item.Phone;
               loEmail = item.Email;
             }
-            if(loPhoneNum === 'undefined' || loPhoneNum === null){
-              loPhoneNum = "";
-            }
-              loFullName = loanData.TPO.LOName;
-              loEmail = loanData.TPO.LOEmail;
-
-            
             if(item.ContactType === 'LOAN_PROCESSOR'){
               processorName = item.Name;
               processorPhoneNum = item.Phone;
@@ -393,7 +386,12 @@ else
 		      feeExists = 'No';
 	      }
 
-
+        if(loPhoneNum === 'undefined' || loPhoneNum === null){
+          loPhoneNum = "";
+        }
+          loFullName = loanData.TPO.LOName;
+          loEmail = loanData.TPO.LOEmail;
+          
           if(loFullName == null) {
             loFullName = '';
             loEmail = '';
