@@ -246,13 +246,13 @@
             //console.log(item.Name);
             appraisalCompany = item.Name;
             }
-            //if(item.ContactType === 'LOAN_OFFICER')
-            //{
-            //  if(item.Name != 'undefined')
-            //  loFullName = item.Name;
-            //  loPhoneNum = item.Phone;
-            //  loEmail = item.Email;
-            //}
+            if(item.ContactType === 'LOAN_OFFICER')
+            {
+              if(item.Name != 'undefined')
+              loFullName = item.Name;
+              loPhoneNum = item.Phone;
+              loEmail = item.Email;
+            }
             if(item.ContactType === 'LOAN_PROCESSOR'){
               processorName = item.Name;
               processorPhoneNum = item.Phone;
@@ -308,19 +308,7 @@
           compensation = loanData.RateLock.BorrLenderPaid;
           refinanceType = loanData.LoanPurposeOfRefinanceType;
 	      fundingFeeList = loanData.FundingFeeList;
-        loFullName = loanData.TPO.Name;
-        tpoLOEmail = loanData.TPO.LOEmail;
-        loEmail = loanData.TPO.LOEmail;
-        loPhoneNum = loanData.TPO.loPhone;
-        if(loPhoneNum != ){
-        string[] milestoneFreeLogs = loanData.milestoneFreeLogs;
-        milestoneFreeLogs.forEach((item, index) => {
-          if(item.loanAssociate.roleName === 'TPO Loan Officer')
-          {
-            loPhoneNum = item.loanAssociate.phone;
-          }
-        });
-        }
+	      tpoLOEmail = loanData.TPO.LOEmail;
 	      tpoProcEmail = loanData.TPO.LPEmail;
 	      //tpoPOCEmail = loanData.
 
@@ -399,12 +387,11 @@ else
 	      }
 
 
-          //if(loFullName == null) {
-          //  loFullName = '';
-          //  loEmail = '';
-          //  loPhoneNum = '';
-          //}
-          loFullName = loanData.TPO.
+          if(loFullName == null) {
+            loFullName = '';
+            loEmail = '';
+            loPhoneNum = '';
+          }
 
           if(processorName == null){
             processorName = '';
