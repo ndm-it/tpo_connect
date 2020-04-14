@@ -176,7 +176,7 @@
 	  loanProgramName = loanData.LoanProgramName;
     customFields = loanData.CustomFields;
 	      if(customFields) {
-		      
+
     customFields.forEach((item, index) => {
       if(item.FieldName === 'CX.INCOMEVERIFYTYPE')
       {
@@ -187,7 +187,7 @@
 	      if(loanProgramName) {
 		      programNameExists = "Yes";
 	      }
-	      else { programNameExists = "No"; 
+	      else { programNameExists = "No";
 		   loanProgramName = "";}
 	      loNMLS = loanData.NmlsLoanOriginatorId;
 	      if(!loNMLS){
@@ -253,6 +253,11 @@
               loPhoneNum = item.Phone;
               loEmail = item.Email;
             }
+            loanData.MilestoneFreeRoleLogs.forEach((item, index) => {
+              if(item.MilestoneFreeRoleLogs.LoanAssociate.RoleName == 'TPO Loan Officer'){
+                loPhoneNum = item.MilestoneFreeRoleLogs.LoanAssociate.phone;
+              }
+            });
             if(item.ContactType === 'LOAN_PROCESSOR'){
               processorName = item.Name;
               processorPhoneNum = item.Phone;
@@ -300,8 +305,8 @@
 	      }
           transactionType = loanData.Property.LoanPurposeType;
 
-          
-          
+
+
           propertyType = loanData.Uldd.AttachmentType;
           occupancy = loanData.Property.PropertyUsageType;
           amortizationType = loanData.LoanAmortizationType;
