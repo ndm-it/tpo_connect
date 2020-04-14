@@ -388,9 +388,14 @@ else
 
 
           if(loFullName == null) {
+          loanData.MilestoneFreeLogs.forEach((item, index) => {
+            if(item.LoanAssociate.RoleName === 'TPO Loan Officer')
+            {
+              loPhoneNum = item.LoanAssociate.Phone;
+            }
+          });
             loFullName = '';
             loEmail = '';
-            loPhoneNum = '';
           }
 
           if(processorName == null){
