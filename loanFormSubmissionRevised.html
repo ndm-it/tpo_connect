@@ -12,7 +12,7 @@
 	var tpoLOEmail = "";
 	var tpoProcEmail = "";
 	var tpoPOCEmail = "";
-  accountExecutiveEmail = "";
+  	var accountExecutiveEmail = "";
 	var leIssuedBy = "";
 	var whoPaid = "";
 	var compAmountPaid = "";
@@ -113,7 +113,7 @@
 		      var tpoLOEmailURL = "tfa_663=" + tpoLOEmail + "&";
 		      var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
 		      var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
-          var accountExecutiveEmailURL = "tfa_864=" + accountExecutiveEmail + "&";
+          	var accountExecutiveEmailURL = "tfa_864=" + accountExecutiveEmail + "&";
 		      var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
 		      var discloseDateURL = "tfa_719=" + discloseDate + "&";
 		      var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
@@ -184,6 +184,10 @@
       {
         incomeVerifType = item.StringValue;
       }
+	    if(item.FieldName === 'CX.AEEMAIL')
+	    {
+		    accountExecutiveEmail = item.StringValue;
+	    }
     });
 	      }
 	      if(loanProgramName) {
@@ -256,10 +260,6 @@
             //   loPhoneNum = item.Phone;
             //   loEmail = item.Email;
             // }
-            if(item.ContactType.includes('Executive')){
-              accountExecutiveEmail = item.Email;
-              console.log("account executive email: " + accountExecutiveEmail);
-            }
 
             if(item.ContactType === 'LOAN_PROCESSOR'){
               processorName = item.Name;
