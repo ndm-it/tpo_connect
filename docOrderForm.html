@@ -72,14 +72,14 @@
       tpoAppObject.getUserData().then(function (userData) {
 	      user_FullName = userData.userFullName;
 	      user_Email = userData.email;
-        console.log('User Data ===', userData);
+        //console.log('User Data ===', userData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
       // Get full user profile, console log and populate some basic on screen information.
       tpoAppObject.getUserProfileData().then(function (userProfileData) {
-        console.log('User Profile Data ===', userProfileData);
+        //console.log('User Profile Data ===', userProfileData);
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
@@ -235,16 +235,8 @@
         });
 
         totalBrokerFees = loanData.Hmda.OriginationCharges;
-
-
-
-
-
-
-
         console.log("Borrower First Name: " + borrowerFirstName);
-
-            myFunction();
+	      myFunction();
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
