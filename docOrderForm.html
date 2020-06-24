@@ -44,6 +44,10 @@
         var brokerOtherLoanFeePercentage = "";
         var brokerOtherLoanFeeAmount = "";
         var totalBrokerFees = "";
+        var loEmail = "";
+        var loPhone = "";
+        var loName = "";
+        var loFax = "";
 
     // Instantiate objects on window load (one-time event handling).
     window.addEventListener("load", function () {
@@ -113,11 +117,16 @@
           var brokerOtherLoanFeePercentageURL = "tfa_57=" + brokerOtherLoanFeePercentage + "&";
           var brokerOtherLoanFeeAmountURL = "tfa_58=" + brokerOtherLoanFeeAmount + "&";
           var totalBrokerFeesURL = "tfa_59=" + totalBrokerFees + "&";
+          var loNameURL = "tfa_74=" + loName + "&";
+          var loEmailURL = "tfa_75=" + loEmail + "&";
+          var loPhoneURL = "tfa_77=" + loPhone + "&";
+          var loFaxURL = "tfa_78=" + loFax;
+          
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
           whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL + brokerFeesBorrowerPaidCompURL + originationFeeURL +
-          brokerOtherLoanFeePercentageURL + brokerOtherLoanFeeAmountURL + totalBrokerFeesURL;
+          brokerOtherLoanFeePercentageURL + brokerOtherLoanFeeAmountURL + totalBrokerFeesURL + loNameURL + loEmailURL + loPhoneURL + loFaxURL;
           console.log(fieldValueString);
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
@@ -129,8 +138,15 @@
       console.log('Loan Data ===', loanData);
         loanGuid = loanData.EncompassId;
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
+        var tpoData = loanData.TPO;
         //NEED TO ADD IN CHECK FOR CX.BROKERDOINGBUSSAS
-        brokerName = loanData.TPO.CompanyLegalName;
+        brokerName = tpoData.CompanyLegalName;
+        
+        loName = tpoData.LOName ? tpoData.LOName : "";
+        loEmail = tpoData.LOEmail ? tpoData.LOEmail : "";
+        loPhone = tpoData.LOPhone ? tpoData.LOPhone : "";
+        loFax = tpoData.LOFax ? tpoData.LOFax : "";
+        
 
         contactsList = loanData.Contacts;
         contactsList.forEach((item,index)=> {
