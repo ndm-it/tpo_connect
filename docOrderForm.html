@@ -126,7 +126,7 @@
       // Get loan summary and console log only.
       // Get full loan object, console log and populate some basic on screen information.
       tpoAppObject.getLoanData().then(function (loanData) {
-      console.log('Printing loan data: ' + loanData);
+      console.log('Loan Data ===', loanData);
         loanGuid = loanData.EncompassId;
         borrowerFirstName = loanData.Applications[0].Borrower.FirstNameWithMiddleName + ' ' + loanData.Applications[0].Borrower.LastName;
         //NEED TO ADD IN CHECK FOR CX.BROKERDOINGBUSSAS
