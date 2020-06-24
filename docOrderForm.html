@@ -166,7 +166,8 @@
         //estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
         //firstPaymentDate = loanData.loanProductData.scheduledFirstPaymentDate;
-        loanProgram = loanData.LoanProgramName;
+	      loanProgram = loanData.LoanProgramName ? "" : loanData.LoanProgramName; 
+        //loanProgram = loanData.LoanProgramName;
         //Need to figure out specific wording for transaction type
         transactionType = loanData.Property.LoanPurposeType;
         switch(transactionType) {
