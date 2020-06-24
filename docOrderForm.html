@@ -236,8 +236,8 @@
         feesArray = loanData.Fees;
         feesArray.forEach((item,index) => {
           if(item.FeeType === 'MortgageBrokerFee'){
-            brokerOtherLoanFeePercentage = item.Percentage;
-            brokerOtherLoanFeeAmount = item.PaidToBroker;
+            brokerOtherLoanFeePercentage = item.Percentage ? item.Percentage : "";
+            brokerOtherLoanFeeAmount = item.PaidToBroker ? item.PaidToBroker : "";
           }
         });
 
