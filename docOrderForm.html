@@ -181,10 +181,13 @@
         if(loanData.ClosingDocument.FinalVestingDescription){
           vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
         }
+        var loanProdData = loanData.LoanProductData;
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
-        estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
+        estimatedClosingDate = loanProdData.LoanScheduledClosingDate ? loanProdData.LoanScheduledClosingDate : "" ;
+        estimatedClosingDate = Date(estimatedClosingDate);
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
-        firstPaymentDate = loanData.LoanProductData.ScheduledFirstPaymentDate;
+        firstPaymentDate = loanProdData.ScheduledFirstPaymentDate ? loanProdData.ScheduledFirstPaymentDate : "";
+        firstPaymentDate = Date(firstPaymentDate);
 	      loanProgram = loanData.LoanProgramName ? loanData.LoanProgramName : ""; 
         //loanProgram = loanData.LoanProgramName;
         //Need to figure out specific wording for transaction type
