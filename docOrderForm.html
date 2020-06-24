@@ -134,19 +134,22 @@
 
         contactsList = loanData.Contacts;
         contactsList.forEach((item,index)=> {
+        
           if(item.ContactType === 'LOAN_PROCESSOR'){
-            accountManager = item.Name;
+          if(item.Name){
+          accountManager = item.Name;
+          }else { accountManager = "";}
           }
+          
           if(item.ContactType === 'TITLE_COMPANY'){
-            titlePhoneNum = item.Phone;
-            titleContact = item.ContactName;
+            if(item.Phone) { titlePhoneNum = item.Phone; }
+            if(item.ContactName) { titleContact = item.ContactName; }
           }
+          
           if(item.ContactType === 'ESCROW_COMPANY'){
-            escrowPhone = item.Phone;
-            escrowContact = item.ContactName;
-            if(item.Email){
-              escrowEmail = item.Email;
-            }
+            if(item.Phone) { escrowPhone = item.Phone; }
+            if(item.ContactName) { escrowContact = item.ContactName; }
+            if(item.Email) { escrowEmail = item.Email; }
           }
 
         });
