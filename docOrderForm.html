@@ -120,13 +120,16 @@
           var loNameURL = "tfa_74=" + loName + "&";
           var loEmailURL = "tfa_75=" + loEmail + "&";
           var loPhoneURL = "tfa_77=" + loPhone + "&";
-          var loFaxURL = "tfa_78=" + loFax;
+          var loFaxURL = "tfa_78=" + loFax + "&";
+          var estimatedClosingDateURL = "tfa_28=" + estimatedClosingDate + "&";
+          var firstPaymentDateURL = "tfa_29=" + firstPaymentDate;
           
           var fieldValueString = borrowerFirstNameURL + brokerNameURL + accountManagerURL + titleCoURL +
           titlePhoneNumURL + titleContactURL + escrowCoURL + escrowPhoneURL + escrowContactURL + escrowEmailURL +
           vestingTextURL + loanProgramURL + transactionTypeURL + impoundsURL + interestRateURL + totalLoanAmountURL +
           whoPaidURL + contractProcessorFeeURL + contractProcessorNameURL + brokerFeesBorrowerPaidCompURL + originationFeeURL +
-          brokerOtherLoanFeePercentageURL + brokerOtherLoanFeeAmountURL + totalBrokerFeesURL + loNameURL + loEmailURL + loPhoneURL + loFaxURL;
+          brokerOtherLoanFeePercentageURL + brokerOtherLoanFeeAmountURL + totalBrokerFeesURL + loNameURL + loEmailURL + loPhoneURL + loFaxURL + 
+          estimatedClosingDateURL + firstPaymentDateURL;
           console.log(fieldValueString);
           document.location.href = "https://www.tfaforms.com/4799706?" + fieldValueString;
         }
@@ -179,9 +182,9 @@
           vestingText = loanData.ClosingDocument.FinalVestingDescription.replace(/&/g, "AND");
         }
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
-        //estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
+        estimatedClosingDate = loanData.LoanProductData.LoanScheduledClosingDate;
         //The values returned in the API, specifically the TPO Connect is so weird compared to within Encompass.
-        //firstPaymentDate = loanData.loanProductData.scheduledFirstPaymentDate;
+        firstPaymentDate = loanData.LoanProductData.ScheduledFirstPaymentDate;
 	      loanProgram = loanData.LoanProgramName ? loanData.LoanProgramName : ""; 
         //loanProgram = loanData.LoanProgramName;
         //Need to figure out specific wording for transaction type
