@@ -22,23 +22,17 @@ $(document).ready(function(){
 
   document.addEventListener("DOMContentLoaded", function(){
   //If loan is already submitted, popup will show up.
-    //if(document.getElementById("tfa_857").value == "Submitted"){
-    //wFORMS.behaviors.validation.onFail = null;
-    //document.getElementById("submit_button").addEventListener("click", alreadySubmitted);
-    //document.getElementById("submit_button").style.color = "red";
-    //}
+    if(document.getElementById("tfa_857").value == "Submitted"){
+    wFORMS.behaviors.validation.onFail = null;
+    document.getElementById("submit_button").addEventListener("click", alreadySubmitted);
+    document.getElementById("submit_button").style.color = "red";
+    }
    //If no loan program name, popup will show up.
     else if(document.getElementById("tfa_816").value.length <= 0){
       wFORMS.behaviors.validation.onFail = null;
-      document.getElementById("submit_button").addEventListener("click", noLoanProgramName);
+      document.getElementById("submit_button").addEventListener("click", noLoamProgramName);
       document.getElementById("submit_button").style.color = "red";
       console.log(document.getElementById("tfa_816").value);
-    }
-    //Prevent Loans with USDA in field 1172 or 1401 to be submitted.
-    else if(document.getElementById("tfa_283").value.includes("USDA") || document.getElementById("tfa_823").value == "USDA"){
-      wFORMS.behaviors.validation.onFail = null;
-      document.getElementById("submit_button").addEventListener("click", preventUSDALoanSubmission);      
-      document.getElementById("submit_button").style.color = "red";
     }
      document.getElementById("tfa_859").addEventListener("click", openNewPopup);
   });
@@ -61,7 +55,7 @@ function openNewPopup() {
 //   console.log('tpoAppObject value ===',tpoAppObject);
 //   //GetLoanData();
 // });}
-//
+// 
 // function GetLoanData() {
 //   tpoAppObject.getLoanData().then(function (loanData) {
 //   console.log('Loan Data ===', loanData);
@@ -72,12 +66,8 @@ function openNewPopup() {
 // });
 // }
 
-function noLoanProgramName() {
+function noLoamProgramName() {
   window.alert("You are currently unable to submit because there is no loan program name on file. Please go to product and pricing to register the loan program.");
-}
-
-function preventUSDALoanSubmission() {
-  window.alert("USDA Loans cannot be submitted at this time.");
 }
 
 function alreadySubmitted() {
