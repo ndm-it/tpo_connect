@@ -57,7 +57,7 @@
         var compensation = "";
 	      var impounds = "";
         var submissionStatus = "";
-	var baseLoanAmount = "";
+	var totalLoanAmount = "";
         var contactsList = [];
         var customFields = [];
         var loanObj = {};
@@ -115,7 +115,7 @@
 		      var tpoProcEmailURL = "tfa_664=" + tpoProcEmail + "&";
 		      var tpoPOCEmailURL = "tfa_665=" + tpoPOCEmail + "&";
           	var accountExecutiveEmailURL = "tfa_864=" + accountExecutiveEmail + "&";
-		var baseLoanAmountURL = "tfa_881=" + baseLoanAmount + "&";
+		var totalLoanAmountURL = "tfa_881=" + totalLoanAmount + "&";
 		      var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
 		      var discloseDateURL = "tfa_719=" + discloseDate + "&";
 		      var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
@@ -155,7 +155,7 @@
           var transactionTypeURL = "tfa_293=" + transactionType;
 
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + accountExecutiveEmailURL + baseLoanAmountURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + submissionStatusURL + submissionStatusTextURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + field1172URL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + accountExecutiveEmailURL + totalLoanAmountURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + submissionStatusURL + submissionStatusTextURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + field1172URL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4799231?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4799231?tfa_2=' + loFullName,'_blank');
@@ -179,7 +179,7 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
 	  loanProgramName = loanData.LoanProgramName;
-	  baseLoanAmount = loanData.BaseLoanAmount;
+	  totalLoanAmount = loanData.BaseLoanAmount;
     customFields = loanData.CustomFields;
 	      if(customFields) {
 
