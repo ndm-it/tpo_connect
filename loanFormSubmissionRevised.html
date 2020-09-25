@@ -328,7 +328,9 @@
 	      //tpoPOCEmail = loanData.
 
 
+//added an if statement here
 	      //Finding 801a or field 454
+	      if(fundingFeeList){
 if(fundingFeeList.includes("801a."))
 {
   var begIndex = fundingFeeList.indexOf("801a.");
@@ -392,7 +394,10 @@ else
 {
   IH_Fee = "";
 }
-
+	      }
+	      
+//added an if statement here
+	      
 	      if(IH_Fee != ""|| processingFees != "")
 		 {
 		 feeExists = 'Yes';
