@@ -4,8 +4,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.elliemae.io/elliemae/core/ssf/1.0/elli.ssf.guest-with-polyfill.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>
-        var tpoAppObject = null;
+    <script>	    
+	var tpoAppObject = null;
         var appraisalCompany = "";
 	var user_FullName = "";
 	var user_Email = "";
@@ -481,6 +481,9 @@ console.log(loanData);
           // loanData.Applications.forEach((item, index) => {
           //   borrowerFirstName = item.Borrower.FullName;
           // });
+	    //FormAssembly "Email Responses to" code snippet
+	    //@IF(@OR(%%tfa_663%%=%%tfa_665%%,%%tfa_664%%=%%tfa_665%%),@IF(%%tfa_663%%=%%tfa_664%%,%%tfa_663%%,@CONCATENATE(%%tfa_664%%,",",%%tfa_663%%,",",%%tfa_864%%,",wsubmissions@myndm.com")),@CONCATENATE(%%tfa_664%%,",",%%tfa_663%%,",",%%tfa_864%%,",wsubmissions@myndm.com"))
+            
             myFunction();
       })
         .catch(function (err) {
