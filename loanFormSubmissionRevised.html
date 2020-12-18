@@ -219,27 +219,35 @@
 	     else {
 		highBalance = 'No';
 	     }
-	    if(loanProgramName.includes('Prime')){
-		      productType = 'Prime Direct';
-		    programType = 'Non-QM';
-	      }
-	      else if(loanProgramName.includes('Credit Direct')){
+		  
+	if(loanProgramName.includes('Alt Prime')){
+          	programType = 'Non-QM';
+          }  
+		  
+// 	    if(loanProgramName.includes('Prime')){
+// 		      productType = 'Prime Direct';
+// 		    programType = 'Non-QM';
+// 	      }
+// 	      else if(loanProgramName.includes('Credit Direct')){
 
-		      productType = 'Credit Direct';
-		      programType = 'Non-QM';
-	      }
-	      else if(loanProgramName.includes('Income Direct')){
-		      productType = 'Income Direct';
-		      programType = 'Non-QM';
-	      }
-	      else if(loanProgramName.includes('Asset')){
-		      productType = 'Asset Direct';
-		      programType = 'Non-QM';
-	      }
-	      else if(loanProgramName.includes('DCR Direct')){
-		      productType = 'DCR Direct';
-		      programType = 'Non-QM';
-	      }
+// 		      productType = 'Credit Direct';
+// 		      programType = 'Non-QM';
+// 	      }
+// 	      else if(loanProgramName.includes('Income Direct')){
+// 		      productType = 'Income Direct';
+// 		      programType = 'Non-QM';
+// 	      }
+// 	      else if(loanProgramName.includes('Asset')){
+// 		      productType = 'Asset Direct';
+// 		      programType = 'Non-QM';
+// 	      }
+// 	      else if(loanProgramName.includes('DCR Direct')){
+// 		      productType = 'DCR Direct';
+// 		      programType = 'Non-QM';
+// 	      }
+		  
+		  
+		  
 	  }
 	      else { highBalance = 'No'; }
 
