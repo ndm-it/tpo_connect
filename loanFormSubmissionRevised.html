@@ -16,6 +16,7 @@
   	var accountExecutiveEmail = "";
 	var leIssuedBy = "";
 	var altPrime = "";
+	var altPrimeleIssuedBy = "";
 	var whoPaid = "";
 	var compAmountPaid = "";
 	var refinanceType = "";
@@ -121,6 +122,7 @@
 		var totalLoanAmountURL = "tfa_881=" + totalLoanAmount + "&";
 		      var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
 		var altPrimeURL = "tfa_889=" + altPrime + "&";
+		var altPrimeleIssuedByURL = "tfa_892=" + altPrimeleIssuedBy + "&";
 		      var discloseDateURL = "tfa_719=" + discloseDate + "&";
 		      var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
@@ -226,6 +228,7 @@
           	programType = 'Non-QM';
 		altPrime = 'Yes';
 		leIssuedBy = 'Lender';
+		altPrimeleIssuedBy = 'Lender';
           }
 		  else {
 			  altPrime = 'No';
