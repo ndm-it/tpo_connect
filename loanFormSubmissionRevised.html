@@ -15,6 +15,7 @@
 	var tpoPOCEmail = "";
   	var accountExecutiveEmail = "";
 	var leIssuedBy = "";
+	var altPrime = "";
 	var whoPaid = "";
 	var compAmountPaid = "";
 	var refinanceType = "";
@@ -119,6 +120,7 @@
           	var accountExecutiveEmailURL = "tfa_864=" + accountExecutiveEmail + "&";
 		var totalLoanAmountURL = "tfa_881=" + totalLoanAmount + "&";
 		      var leIssuedByURL = "tfa_686=" + leIssuedBy + "&";
+		var altPrimeURL = "tfa_889=" + altPrime + "&";
 		      var discloseDateURL = "tfa_719=" + discloseDate + "&";
 		      var discloseDateCheckboxURL = "tfa_727=" + discloseDateCheckbox + "&";
           var whoPaidURL = "tfa_249=" + whoPaid + "&";
@@ -222,7 +224,12 @@
 		  
 	if(loanProgramName.includes('Alt Prime')){
           	programType = 'Non-QM';
-          }  
+		altPrime = 'Yes';
+		leIssuedBy = 'Lender';
+          }
+		  else {
+			  altPrime = 'No';
+		  }
 		  
 // 	    if(loanProgramName.includes('Prime')){
 // 		      productType = 'Prime Direct';
