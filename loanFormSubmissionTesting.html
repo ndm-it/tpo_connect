@@ -11,17 +11,6 @@
   var loanNumber = "";
   var borrowerFirstName = "";
   var borrowerLastName = "";
-	var user_FullName = "";
-	var tpoLOEmail = "";
-	var tpoProcEmail = "";
-	var tpoPOCEmail = "";
-  var accountExecutiveEmail = "";
-  var loFullName = "";
-  var loEmail = "";
-  var processorName = "";
-  var processorEmail = "";
-	var borrowerType = "";
-	var borrowerEmail = "";
   var contactsList = [];
   var customFields = [];
   
@@ -53,52 +42,9 @@
           loanGuid = loanData.EncompassId;
 	  loanNumber = loanData.LoanNumber;
     customFields = loanData.CustomFields;
-	      if(customFields) {
-
-    customFields.forEach((item, index) => {
-	    if(item.FieldName === 'CX.AEEMAIL')
-	    {
-		    accountExecutiveEmail = item.StringValue;
-	    }
-    });
-	      }
-          contactsList.forEach((item, index) => {
-            if(item.ContactType === 'LOAN_PROCESSOR'){
-              processorName = item.Name;
-              processorEmail = item.Email;
-            }
-	    if(item.CategoryName === 'Broker\'s Loan Contact'){
-	      if(item.Email){
-		 tpoPOCEmail = item.Email;
-	      }
-	      else { tpoPOCEmail = ""; }
-	    }
-          });
-          borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
+    borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
 	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
-	  borrowerEmail = loanData.Applications[0].Borrower.EmailAddressText;
-	  if(!borrowerEmail)
-	  {
-		  borrowerEmail = '';
-	  }
-	      if(loanData.Applications[0].Coborrower.BorrowerType == 'Individual')
-		 {
-			 borrowerType = 'Individual';
-		 }
-	      tpoLOEmail = loanData.TPO.LOEmail;
-	      tpoProcEmail = loanData.TPO.LPEmail;
-	      }
-          loFullName = loanData.TPO.LOName;
-          loEmail = loanData.TPO.LOEmail;
-
-          if(processorName == null){
-            processorName = '';
-            processorEmail = '';
-          }
-          console.log("LO Full Name: " + loFullName + " LO Email: " + loEmail +
-          " Processor Name: " + processorName + " Processor Email: " + processorEmail + " Processor Phone Num: " +
-          " BorrowerName: " + borrowerFirstName + 
-          " user full name: " + user_FullName);
+  }
           
 console.log(loanData);
   tpoAppObject.getExternalOrgDetails().then(function(externalOrgData) {
