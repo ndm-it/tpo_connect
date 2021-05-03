@@ -26,12 +26,12 @@
     });
     
     // Subscribe to loanOpen event to refresh context when loan context changes (context event handling).
-     elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
-     function onLoanOpened(proxy, loanData) {
-       GetLoanData();
-       this.loanData = loanData;
-       console.log('loanOpen => loanData ===', loanData);
-     }
+     // elli.script.subscribe('tpoApplication', 'loanOpen', onLoanOpened);
+     // function onLoanOpened(proxy, loanData) {
+     //   GetLoanData();
+     //   this.loanData = loanData;
+     //   console.log('loanOpen => loanData ===', loanData);
+     // }
 
     function GetLoanData() {
       tpoAppObject.getLoanData().then(function (loanData) {
