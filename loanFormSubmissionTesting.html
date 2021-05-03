@@ -21,8 +21,9 @@
         this.tpoAppObject = tpoAppObject;
 		    // This call will only succeed on page load event if user already has opened a loan in TPOC.
 		    // Use the onLoanOpened event (as shown below) to get/refresh loan data when user opens a loan.
-          GetLoanData();
-          console.log('Within addeventlistener loan after GetLoanData');
+        console.log('Before GetLoanData function');
+        GetLoanData();
+        console.log('Within addeventlistener loan after GetLoanData');
       });
     });
 
@@ -37,25 +38,20 @@
     function GetLoanData() {
       tpoAppObject.getLoanData().then(function (loanData) {
           console.log('Loan Data ===', loanData);
-          //Getting Appraisal Company Name
-          contactsList = loanData.Contacts;
-          console.log('Contacts list', contactsList);
           loanGuid = loanData.EncompassId;
-	  loanNumber = loanData.LoanNumber;
-    customFields = loanData.CustomFields;
-    borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
-	  borrowerLastName = loanData.Applications[0].Borrower.LastName;
-
-console.log(loanData);
-  tpoAppObject.getExternalOrgDetails().then(function(externalOrgData) {
-        console.log('External Org data ===', externalOrgData);
-        siteId = externalOrgData.siteId;
-        });
-      })
-        .catch(function (err) {
+          loanNumber = loanData.LoanNumber;
+          customFields = loanData.CustomFields;
+          borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
+          borrowerLastName = loanData.Applications[0].Borrower.LastName;
+          console.log(loanData);
+          tpoAppObject.getExternalOrgDetails().then(function(externalOrgData) {
+            console.log('External Org data ===', externalOrgData);
+            siteId = externalOrgData.siteId;
+          });
+        }).catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
-    }
+      }
     </script>
 </head>
 <body style="font-family: ProximaNova-Medium,Helvetica,Arial,sans-serif;">
