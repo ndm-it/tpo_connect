@@ -44,6 +44,7 @@
           borrowerFirstName = loanData.Applications[0].Borrower.FirstName;
           borrowerLastName = loanData.Applications[0].Borrower.LastName;
           console.log(loanData);
+          console.log(typeof tpoAppObject);
           tpoAppObject.getExternalOrgDetails().then(function(externalOrgData) {
             console.log('External Org data ===', externalOrgData);
             siteId = externalOrgData.siteId;
