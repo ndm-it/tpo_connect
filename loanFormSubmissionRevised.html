@@ -159,7 +159,6 @@
           var submissionStatusURL = "tfa_850=" + submissionStatus + "&";
           var submissionStatusTextURL = "tfa_857=" + submissionStatus + "&";
           var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
-		//Add in the correct dscrEffectivedate field in formassembly.
 		var dscrEffectiveDateURL = "tfa_897=" + dscrEffectiveDate + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
 	  
@@ -223,6 +222,9 @@
 		      loNMLS = "";
 	      }
 	      whoPaid = loanData.LOCompensation.WhoPaidCompensation;
+	      if(dscrEffectiveDate == "Yes"){
+		      whoPaid = "Borrower Paid";
+	      }
 	      leIssuedBy = loanData.TPO.LEIssuedBy;
 	      compAmountPaid = loanData.TotalPaidToBrokerAmount;
 	      if(compAmountPaid == null) {
