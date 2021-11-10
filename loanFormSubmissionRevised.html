@@ -203,7 +203,13 @@
 		    accountExecutiveEmail = item.StringValue;
 	    }
 	    if(item.FieldName === 'CX.DSCR.EFFECTIVEDATE'){
-		    dscrEffectiveDate = item.StringValue;
+		    if(item.StringValue){
+			    dscrEffectiveDate = item.StringValue;
+		    }
+		    else {
+			    dscrEffectiveDate = "No";
+		    }
+		    
 	    }
     });
 	      }
