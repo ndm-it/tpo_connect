@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.elliemae.io/elliemae/core/ssf/1.0/elli.ssf.guest-with-polyfill.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>	    
+    <script>
 	var tpoAppObject = null;
   var siteId = "";
         var appraisalCompany = "";
@@ -61,6 +61,7 @@
 	      var impounds = "";
         var submissionStatus = "";
 	var totalLoanAmount = "";
+  var tpoDisclosedBy = "";
 	    var dscrEffectiveDate = "No";
         var contactsList = [];
         var customFields = [];
@@ -161,11 +162,12 @@
           var incomeVerifTypeURL = "tfa_824=" + incomeVerifType + "&";
 		var dscrEffectiveDateURL = "tfa_897=" + dscrEffectiveDate + "&";
 		var whoPaidDSCRURL = "tfa_903=" + whoPaid + "&";
+		var tpoDisclosedByURL = "tfa_906=" + tpoDisclosedBy + "&";
           var transactionTypeURL = "tfa_293=" + transactionType;
-	  
+
 
           //window.location.href('https://www.tfaforms.com/4759136?tfa_2=' + loFullName);
-          var fieldValueString = loFullNameURL + siteIdURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + accountExecutiveEmailURL + totalLoanAmountURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + altPrimeURL + altPrimeIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + submissionStatusURL + submissionStatusTextURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + field1172URL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + dscrEffectiveDateURL + whoPaidDSCRURL + transactionTypeURL;
+          var fieldValueString = loFullNameURL + siteIdURL + refinanceTypeURL + tpoLOEmailURL + loanProgramNameURL + impoundsURL + accountExecutiveEmailURL + totalLoanAmountURL + incomeVerifTypeURL + programNameExistsURL + tpoProcEmailURL + productTypeURL + discloseDateURL + discloseDateCheckboxURL + tpoPOCEmailURL + loanOriginationFeesURL + processingFeesURL + leIssuedByURL + altPrimeURL + altPrimeIssuedByURL + IH_FeeURL + feeExistsURL + userFullNameURL + userEmailURL + whoPaidURL + loPhoneNumURL + loEmailURL + loNMLSURL + highBalanceURL + loanNumberURL + processorNameURL + processorEmailURL + processorPhoneNumURL + borrowerTypeURL + submissionStatusURL + submissionStatusTextURL + borrowerFirstNameURL + borrowerLastNameURL + borrowerEmailURL + CoBorrowerFirstNameURL + CoBorrowerLastNameURL + programTypeURL + field1172URL + propertyTypeURL + occupancyURL + fixedLoanTermURL + amortizationTypeURL + armTypeURL + compensationURL + loanGuidURL + dscrEffectiveDateURL + whoPaidDSCRURL + tpoDisclosedByURL + transactionTypeURL;
           document.location.href = "https://www.tfaforms.com/4799231" + fieldValueString;
           //document.location.href = "https://www.tfaforms.com/4799231?/tfa_2=" + loFullName;
           //window.open('https://www.tfaforms.com/4799231?tfa_2=' + loFullName,'_blank');
@@ -202,6 +204,14 @@
 	    {
 		    accountExecutiveEmail = item.StringValue;
 	    }
+      if(item.FieldName === 'CX.TPO.DISCLOSEDBY')
+      {
+        if(item.StringValue)
+        {
+          tpoDisclosedBy = item.StringValue;
+        }
+        else { tpoDisclosedBy = "";}
+      }
 	    if(item.FieldName === 'CX.DSCR.EFFECTIVEDATE'){
 		    if(item.StringValue){
 			    dscrEffectiveDate = item.StringValue;
@@ -209,10 +219,10 @@
 		    else {
 			    dscrEffectiveDate = "No";
 		    }
-		    
 	    }
     });
 	      }
+
 	      if(loanProgramName) {
 		      programNameExists = "Yes";
 	      }
@@ -232,6 +242,7 @@
 		      compAmountPaid = '';
 	      }
 	      programType = loanData.MortgageType;
+
 	  if(loanProgramName) {
 	     if(loanProgramName.includes('HB')) {
 	        highBalance = 'Yes';
@@ -239,7 +250,7 @@
 	     else {
 		highBalance = 'No';
 	     }
-		  
+
 	if(loanProgramName.includes('Alt Prime')){
           	programType = 'Non-QM';
 		altPrime = 'Yes';
@@ -249,7 +260,7 @@
 		  else {
 			  altPrime = 'No';
 		  }
-		  
+
 // 	    if(loanProgramName.includes('Prime')){
 // 		      productType = 'Prime Direct';
 // 		    programType = 'Non-QM';
@@ -271,9 +282,9 @@
 // 		      productType = 'DCR Direct';
 // 		      programType = 'Non-QM';
 // 	      }
-		  
-		  
-		  
+
+
+
 	  }
 	      else { highBalance = 'No'; }
 
@@ -431,9 +442,9 @@ else
   IH_Fee = "";
 }
 	      }
-	      
+
 //added an if statement here
-	      
+
 	      if(IH_Fee != ""|| processingFees != "")
 		 {
 		 feeExists = 'Yes';
@@ -523,7 +534,7 @@ console.log(loanData);
         console.log('External Org data ===', externalOrgData);
         siteId = externalOrgData.siteId;
         myFunction();
-        });    
+        });
       })
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
