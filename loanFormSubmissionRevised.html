@@ -208,7 +208,7 @@
       {
         if(item.StringValue)
         {
-          tpoDisclosedBy = item.StringValue;
+          tpoDisclosedBy = item.StringValue.replace(/\s/g, '');;
         }
         else { tpoDisclosedBy = "";}
       }
